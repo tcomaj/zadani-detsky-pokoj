@@ -259,43 +259,40 @@ function elevation() {
   <rect class="wall" x="${-T}" y="${CH}" width="${L + 2 * T}" height="${T}"/>
   <rect class="wall" x="${-T}" y="0" width="${T}" height="${CH}"/>
   <rect class="wall" x="${L}" y="0" width="${T}" height="${CH}"/>
-  <text class="lbl muted" x="${-T - 60}" y="${CH / 2}" text-anchor="middle" transform="rotate(-90 ${-T - 60} ${CH / 2})">okenní stěna</text>
+  <text class="lbl muted" x="${L + T + 110}" y="${CH / 2}" text-anchor="middle" transform="rotate(90 ${L + T + 110} ${CH / 2})">okenní stěna</text>
 
-  <!-- wardrobe wall seen from the side -->
-  <rect class="furn" x="${wardX}" y="0" width="${L - wardX}" height="${CH}"/>
-  <text class="flbl" x="${wardX + 300}" y="${CH / 2}" text-anchor="middle" transform="rotate(-90 ${wardX + 300} ${CH / 2})">skříňová stěna (bok)</text>
+  <!-- geometry is modelled from the window corner (x = 0) and mirrored, because seen from
+       inside the room the window is on the viewer's right and the back wall on the left -->
+  <g transform="translate(${L} 0) scale(-1 1)">
+    <rect class="furn" x="${wardX}" y="0" width="${L - wardX}" height="${CH}"/>
+    <rect class="furn" x="${radX1}" y="${z(radZ2)}" width="${radX2 - radX1}" height="${radZ2 - radZ1}"/>
+    ${fins}
+    ${pegs}${items}
+    ${chair(1300)}${chair(2300)}
+    <rect class="shade" x="0" y="${z(deskZ)}" width="${deskL}" height="160"/>
+    <rect class="slab" x="0" y="${z(deskZ + deskT)}" width="${deskL}" height="${deskT}"/>
+    <rect class="grille" x="${radX1}" y="${z(deskZ + deskT) - 30}" width="${radX2 - radX1}" height="${deskT + 60}"/>
+    ${kid(3900)}
+  </g>
 
-  <!-- radiator -->
-  <rect class="furn" x="${radX1}" y="${z(radZ2)}" width="${radX2 - radX1}" height="${radZ2 - radZ1}"/>
-  ${fins}
-  <text class="fsub" x="${(radX1 + radX2) / 2}" y="${z(radZ1) + 130}" text-anchor="middle">nízký radiátor</text>
-
-  <!-- pegboard band -->
-  ${pegs}${items}
-  <text class="fsub" x="${deskL / 2}" y="${z(pegZ2) - 60}" text-anchor="middle">děrovaná deska SKÅDIS, 4 × 76 × 56 cm</text>
-
-  <!-- chairs (behind the desk slab) -->
-  ${chair(1300)}${chair(2300)}
-
-  <!-- floating desk slab with a soft shadow underneath -->
-  <rect class="shade" x="0" y="${z(deskZ)}" width="${deskL}" height="160"/>
-  <rect class="slab" x="0" y="${z(deskZ + deskT)}" width="${deskL}" height="${deskT}"/>
-  <rect class="grille" x="${radX1}" y="${z(deskZ + deskT) - 30}" width="${radX2 - radX1}" height="${deskT + 60}"/>
-  <text class="fsub" x="${(radX1 + radX2) / 2}" y="${z(deskZ) + 150}" text-anchor="middle">mřížka v desce</text>
-  <text class="flbl" x="2850" y="${z(deskZ + deskT) - 35}" text-anchor="middle">zavěšený stůl</text>
-  <text class="fsub" x="2850" y="${z(deskZ) + 120}" text-anchor="middle">310 × 50, bez nohou</text>
-  ${kid(3900)}
-  <text class="fsub" x="3900" y="${z(0) - 40}" text-anchor="middle">dítě 115 cm</text>
-  <text class="lbl muted" x="80" y="${z(2300)}">← francouzské okno do zahrady</text>
+  <!-- labels (x mirrored by hand: m(x) = L - x) -->
+  <text class="flbl" x="${L - wardX - 300}" y="${CH / 2}" text-anchor="middle" transform="rotate(-90 ${L - wardX - 300} ${CH / 2})">skříňová stěna (bok)</text>
+  <text class="fsub" x="${L - (radX1 + radX2) / 2}" y="${z(radZ1) + 130}" text-anchor="middle">nízký radiátor</text>
+  <text class="fsub" x="${L - deskL / 2}" y="${z(pegZ2) - 60}" text-anchor="middle">děrovaná deska SKÅDIS, 4 × 76 × 56 cm</text>
+  <text class="fsub" x="${L - (radX1 + radX2) / 2}" y="${z(deskZ) + 150}" text-anchor="middle">mřížka v desce</text>
+  <text class="flbl" x="${L - 2850}" y="${z(deskZ + deskT) - 35}" text-anchor="middle">zavěšený stůl</text>
+  <text class="fsub" x="${L - 2850}" y="${z(deskZ) + 120}" text-anchor="middle">310 × 50, bez nohou</text>
+  <text class="fsub" x="${L - 3900}" y="${z(0) - 40}" text-anchor="middle">dítě 115 cm</text>
+  <text class="lbl muted" x="${L - 80}" y="${z(2300)}" text-anchor="end">francouzské okno do zahrady →</text>
 
   <!-- dimensions -->
-  ${dimH(0, deskL, -400, '3 100', 0, 0)}
-  ${dimH(deskL, wardX, -400, '1 100', 0, 0)}
-  ${dimH(wardX, L, -400, '600', 0, 0)}
-  ${dimV(-520, z(deskZ), z(0), '720', 0, 0)}
+  ${dimH(0, L - wardX, -400, '600', 0, 0)}
+  ${dimH(L - wardX, L - deskL, -400, '1 100', 0, 0)}
+  ${dimH(L - deskL, L, -400, '3 100', 0, 0)}
+  ${dimV(L + 520, z(deskZ), z(0), '720', L + T, L + T, 1)}
   ${dimV(-820, z(CH), z(0), '2 600', -T, -T)}
-  ${dimV(L + 520, z(pegZ2), z(pegZ1), '560', L + T, L + T, 1)}
-  ${dimV(L + 520, z(pegZ1), z(deskZ), '180', L + T, L + T, 1)}
+  ${dimV(-520, z(pegZ2), z(pegZ1), '560', -T, -T)}
+  ${dimV(-520, z(pegZ1), z(deskZ), '180', -T, -T)}
   <g class="dim">
     <line x1="0" y1="${CH + 520}" x2="1000" y2="${CH + 520}"/>
     ${tick(0, CH + 520, 0)}${tick(1000, CH + 520, 0)}

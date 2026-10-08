@@ -508,7 +508,7 @@
 
   <section id="pohled">
     <h2><span class="num">C</span>Pohled na levou stěnu</h2>
-    <p class="sub">Stěna s radiátorem ve variantě C, při pohledu od postele. Výšky jsou orientační.</p>
+    <p class="sub">Stěna s radiátorem ve variantě C, při pohledu od postele: okno vpravo, skříňová stěna vlevo. Výšky jsou orientační.</p>
     <div class="elev">
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="-1150 -750 6950 4050" role="img" aria-label="Pohled na levou stěnu, varianta C">
   <style>
@@ -544,23 +544,16 @@
   <rect class="wall" x="-150" y="2600" width="5100" height="150"/>
   <rect class="wall" x="-150" y="0" width="150" height="2600"/>
   <rect class="wall" x="4800" y="0" width="150" height="2600"/>
-  <text class="lbl muted" x="-210" y="1300" text-anchor="middle" transform="rotate(-90 -210 1300)">okenní stěna</text>
+  <text class="lbl muted" x="5060" y="1300" text-anchor="middle" transform="rotate(90 5060 1300)">okenní stěna</text>
 
-  <!-- wardrobe wall seen from the side -->
-  <rect class="furn" x="4200" y="0" width="600" height="2600"/>
-  <text class="flbl" x="4500" y="1300" text-anchor="middle" transform="rotate(-90 4500 1300)">skříňová stěna (bok)</text>
-
-  <!-- radiator -->
-  <rect class="furn" x="400" y="2150" width="600" height="300"/>
-  <line class="thin" x1="460" y1="2180" x2="460" y2="2420"/><line class="thin" x1="520" y1="2180" x2="520" y2="2420"/><line class="thin" x1="580" y1="2180" x2="580" y2="2420"/><line class="thin" x1="640" y1="2180" x2="640" y2="2420"/><line class="thin" x1="700" y1="2180" x2="700" y2="2420"/><line class="thin" x1="760" y1="2180" x2="760" y2="2420"/><line class="thin" x1="820" y1="2180" x2="820" y2="2420"/><line class="thin" x1="880" y1="2180" x2="880" y2="2420"/><line class="thin" x1="940" y1="2180" x2="940" y2="2420"/>
-  <text class="fsub" x="700" y="2580" text-anchor="middle">nízký radiátor</text>
-
-  <!-- pegboard band -->
-  <rect class="peg" x="10" y="1140" width="740" height="560" rx="24"/><rect class="peg" x="770" y="1140" width="740" height="560" rx="24"/><rect class="peg" x="1530" y="1140" width="740" height="560" rx="24"/><rect class="peg" x="2290" y="1140" width="740" height="560" rx="24"/><rect class="item" x="300" y="1350" width="90" height="120" rx="14"/><rect class="item" x="410" y="1350" width="90" height="120" rx="14"/><rect class="item" x="1700" y="1400" width="520" height="26"/><rect class="item" x="1760" y="1290" width="70" height="110" rx="10"/><rect class="item" x="1850" y="1250" width="60" height="150" rx="10"/><path class="thin" d="M2650,1220 v60 q0,40 40,40 h20"/><path class="item" d="M2620,1320 h190 v170 q0,30 -30,30 h-130 q-30,0 -30,-30 z"/>
-  <text class="fsub" x="1550" y="1080" text-anchor="middle">děrovaná deska SKÅDIS, 4 × 76 × 56 cm</text>
-
-  <!-- chairs (behind the desk slab) -->
-  <g class="thin">
+  <!-- geometry is modelled from the window corner (x = 0) and mirrored, because seen from
+       inside the room the window is on the viewer's right and the back wall on the left -->
+  <g transform="translate(4800 0) scale(-1 1)">
+    <rect class="furn" x="4200" y="0" width="600" height="2600"/>
+    <rect class="furn" x="400" y="2150" width="600" height="300"/>
+    <line class="thin" x1="460" y1="2180" x2="460" y2="2420"/><line class="thin" x1="520" y1="2180" x2="520" y2="2420"/><line class="thin" x1="580" y1="2180" x2="580" y2="2420"/><line class="thin" x1="640" y1="2180" x2="640" y2="2420"/><line class="thin" x1="700" y1="2180" x2="700" y2="2420"/><line class="thin" x1="760" y1="2180" x2="760" y2="2420"/><line class="thin" x1="820" y1="2180" x2="820" y2="2420"/><line class="thin" x1="880" y1="2180" x2="880" y2="2420"/><line class="thin" x1="940" y1="2180" x2="940" y2="2420"/>
+    <rect class="peg" x="10" y="1140" width="740" height="560" rx="24"/><rect class="peg" x="770" y="1140" width="740" height="560" rx="24"/><rect class="peg" x="1530" y="1140" width="740" height="560" rx="24"/><rect class="peg" x="2290" y="1140" width="740" height="560" rx="24"/><rect class="item" x="300" y="1350" width="90" height="120" rx="14"/><rect class="item" x="410" y="1350" width="90" height="120" rx="14"/><rect class="item" x="1700" y="1400" width="520" height="26"/><rect class="item" x="1760" y="1290" width="70" height="110" rx="10"/><rect class="item" x="1850" y="1250" width="60" height="150" rx="10"/><path class="thin" d="M2650,1220 v60 q0,40 40,40 h20"/><path class="item" d="M2620,1320 h190 v170 q0,30 -30,30 h-130 q-30,0 -30,-30 z"/>
+    <g class="thin">
     <rect x="1110" y="2170" width="380" height="45" rx="18" fill="#fff"/>
     <line x1="1150" y1="2170" x2="1150" y2="1800"/>
     <line x1="1450" y1="2170" x2="1450" y2="1800"/>
@@ -581,49 +574,53 @@
     <line x1="2180" y1="2215" x2="2165" y2="2600" opacity=".45"/>
     <line x1="2420" y1="2215" x2="2435" y2="2600" opacity=".45"/>
   </g>
-
-  <!-- floating desk slab with a soft shadow underneath -->
-  <rect class="shade" x="0" y="1880" width="3100" height="160"/>
-  <rect class="slab" x="0" y="1830" width="3100" height="50"/>
-  <rect class="grille" x="400" y="1800" width="600" height="110"/>
-  <text class="fsub" x="700" y="2030" text-anchor="middle">mřížka v desce</text>
-  <text class="flbl" x="2850" y="1795" text-anchor="middle">zavěšený stůl</text>
-  <text class="fsub" x="2850" y="2000" text-anchor="middle">310 × 50, bez nohou</text>
-  <g class="fig">
+    <rect class="shade" x="0" y="1880" width="3100" height="160"/>
+    <rect class="slab" x="0" y="1830" width="3100" height="50"/>
+    <rect class="grille" x="400" y="1800" width="600" height="110"/>
+    <g class="fig">
     <circle cx="3900" cy="1550" r="95"/>
     <path d="M3780,1670 q120,-60 240,0 l30,420 h-60 l-20,-200 l-30,560 h-70 l-15,-420 l-15,420 h-70 l-30,-560 l-20,200 h-60 z"/>
   </g>
-  <text class="fsub" x="3900" y="2560" text-anchor="middle">dítě 115 cm</text>
-  <text class="lbl muted" x="80" y="300">← francouzské okno do zahrady</text>
+  </g>
+
+  <!-- labels (x mirrored by hand: m(x) = L - x) -->
+  <text class="flbl" x="300" y="1300" text-anchor="middle" transform="rotate(-90 300 1300)">skříňová stěna (bok)</text>
+  <text class="fsub" x="4100" y="2580" text-anchor="middle">nízký radiátor</text>
+  <text class="fsub" x="3250" y="1080" text-anchor="middle">děrovaná deska SKÅDIS, 4 × 76 × 56 cm</text>
+  <text class="fsub" x="4100" y="2030" text-anchor="middle">mřížka v desce</text>
+  <text class="flbl" x="1950" y="1795" text-anchor="middle">zavěšený stůl</text>
+  <text class="fsub" x="1950" y="2000" text-anchor="middle">310 × 50, bez nohou</text>
+  <text class="fsub" x="900" y="2560" text-anchor="middle">dítě 115 cm</text>
+  <text class="lbl muted" x="4720" y="300" text-anchor="end">francouzské okno do zahrady →</text>
 
   <!-- dimensions -->
   <g class="dim">
     <line x1="0" y1="0" x2="0" y2="-480"/>
-    <line x1="3100" y1="0" x2="3100" y2="-480"/>
-    <line x1="0" y1="-400" x2="3100" y2="-400"/>
-    <line x1="-55" y1="-345" x2="55" y2="-455" transform="rotate(0 0 -400)"/><line x1="3045" y1="-345" x2="3155" y2="-455" transform="rotate(0 3100 -400)"/>
-    <text x="1550" y="-440" text-anchor="middle">3 100</text>
+    <line x1="600" y1="0" x2="600" y2="-480"/>
+    <line x1="0" y1="-400" x2="600" y2="-400"/>
+    <line x1="-55" y1="-345" x2="55" y2="-455" transform="rotate(0 0 -400)"/><line x1="545" y1="-345" x2="655" y2="-455" transform="rotate(0 600 -400)"/>
+    <text x="300" y="-440" text-anchor="middle">600</text>
   </g>
   <g class="dim">
-    <line x1="3100" y1="0" x2="3100" y2="-480"/>
-    <line x1="4200" y1="0" x2="4200" y2="-480"/>
-    <line x1="3100" y1="-400" x2="4200" y2="-400"/>
-    <line x1="3045" y1="-345" x2="3155" y2="-455" transform="rotate(0 3100 -400)"/><line x1="4145" y1="-345" x2="4255" y2="-455" transform="rotate(0 4200 -400)"/>
-    <text x="3650" y="-440" text-anchor="middle">1 100</text>
+    <line x1="600" y1="0" x2="600" y2="-480"/>
+    <line x1="1700" y1="0" x2="1700" y2="-480"/>
+    <line x1="600" y1="-400" x2="1700" y2="-400"/>
+    <line x1="545" y1="-345" x2="655" y2="-455" transform="rotate(0 600 -400)"/><line x1="1645" y1="-345" x2="1755" y2="-455" transform="rotate(0 1700 -400)"/>
+    <text x="1150" y="-440" text-anchor="middle">1 100</text>
   </g>
   <g class="dim">
-    <line x1="4200" y1="0" x2="4200" y2="-480"/>
+    <line x1="1700" y1="0" x2="1700" y2="-480"/>
     <line x1="4800" y1="0" x2="4800" y2="-480"/>
-    <line x1="4200" y1="-400" x2="4800" y2="-400"/>
-    <line x1="4145" y1="-345" x2="4255" y2="-455" transform="rotate(0 4200 -400)"/><line x1="4745" y1="-345" x2="4855" y2="-455" transform="rotate(0 4800 -400)"/>
-    <text x="4500" y="-440" text-anchor="middle">600</text>
+    <line x1="1700" y1="-400" x2="4800" y2="-400"/>
+    <line x1="1645" y1="-345" x2="1755" y2="-455" transform="rotate(0 1700 -400)"/><line x1="4745" y1="-345" x2="4855" y2="-455" transform="rotate(0 4800 -400)"/>
+    <text x="3250" y="-440" text-anchor="middle">3 100</text>
   </g>
   <g class="dim">
-    <line x1="0" y1="1880" x2="-440" y2="1880"/>
-    <line x1="0" y1="2600" x2="-440" y2="2600"/>
-    <line x1="-520" y1="1880" x2="-520" y2="2600"/>
-    <line x1="-575" y1="1935" x2="-465" y2="1825" transform="rotate(0 -520 1880)"/><line x1="-575" y1="2655" x2="-465" y2="2545" transform="rotate(0 -520 2600)"/>
-    <text x="-565" y="2240" text-anchor="middle" transform="rotate(-90 -565 2240)">720</text>
+    <line x1="4950" y1="1880" x2="5240" y2="1880"/>
+    <line x1="4950" y1="2600" x2="5240" y2="2600"/>
+    <line x1="5320" y1="1880" x2="5320" y2="2600"/>
+    <line x1="5265" y1="1935" x2="5375" y2="1825" transform="rotate(0 5320 1880)"/><line x1="5265" y1="2655" x2="5375" y2="2545" transform="rotate(0 5320 2600)"/>
+    <text x="5365" y="2240" text-anchor="middle" transform="rotate(90 5365 2240)">720</text>
   </g>
   <g class="dim">
     <line x1="-150" y1="0" x2="-740" y2="0"/>
@@ -633,18 +630,18 @@
     <text x="-865" y="1300" text-anchor="middle" transform="rotate(-90 -865 1300)">2 600</text>
   </g>
   <g class="dim">
-    <line x1="4950" y1="1140" x2="5240" y2="1140"/>
-    <line x1="4950" y1="1700" x2="5240" y2="1700"/>
-    <line x1="5320" y1="1140" x2="5320" y2="1700"/>
-    <line x1="5265" y1="1195" x2="5375" y2="1085" transform="rotate(0 5320 1140)"/><line x1="5265" y1="1755" x2="5375" y2="1645" transform="rotate(0 5320 1700)"/>
-    <text x="5365" y="1420" text-anchor="middle" transform="rotate(90 5365 1420)">560</text>
+    <line x1="-150" y1="1140" x2="-440" y2="1140"/>
+    <line x1="-150" y1="1700" x2="-440" y2="1700"/>
+    <line x1="-520" y1="1140" x2="-520" y2="1700"/>
+    <line x1="-575" y1="1195" x2="-465" y2="1085" transform="rotate(0 -520 1140)"/><line x1="-575" y1="1755" x2="-465" y2="1645" transform="rotate(0 -520 1700)"/>
+    <text x="-565" y="1420" text-anchor="middle" transform="rotate(-90 -565 1420)">560</text>
   </g>
   <g class="dim">
-    <line x1="4950" y1="1700" x2="5240" y2="1700"/>
-    <line x1="4950" y1="1880" x2="5240" y2="1880"/>
-    <line x1="5320" y1="1700" x2="5320" y2="1880"/>
-    <line x1="5265" y1="1755" x2="5375" y2="1645" transform="rotate(0 5320 1700)"/><line x1="5265" y1="1935" x2="5375" y2="1825" transform="rotate(0 5320 1880)"/>
-    <text x="5365" y="1790" text-anchor="middle" transform="rotate(90 5365 1790)">180</text>
+    <line x1="-150" y1="1700" x2="-440" y2="1700"/>
+    <line x1="-150" y1="1880" x2="-440" y2="1880"/>
+    <line x1="-520" y1="1700" x2="-520" y2="1880"/>
+    <line x1="-575" y1="1755" x2="-465" y2="1645" transform="rotate(0 -520 1700)"/><line x1="-575" y1="1935" x2="-465" y2="1825" transform="rotate(0 -520 1880)"/>
+    <text x="-565" y="1790" text-anchor="middle" transform="rotate(-90 -565 1790)">180</text>
   </g>
   <g class="dim">
     <line x1="0" y1="3120" x2="1000" y2="3120"/>
