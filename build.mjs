@@ -80,10 +80,10 @@ const planSvg = `
   <line class="thin" x1="${winL}" y1="${-T / 2}" x2="${winR}" y2="${-T / 2}"/>
   <line class="thin" x1="${winL}" y1="${-T}" x2="${winL}" y2="0"/>
   <line class="thin" x1="${winR}" y1="${-T}" x2="${winR}" y2="0"/>
-  <line class="thin" x1="${winL + winFixed}" y1="${-T}" x2="${winL + winFixed}" y2="0"/>
-  <!-- opening leaf, hinged right, swings into the room -->
-  <line class="thin" x1="${hingeX}" y1="0" x2="${hingeX}" y2="${winLeaf}"/>
-  <path class="swing" d="M${hingeX - winLeaf},0 A${winLeaf},${winLeaf} 0 0 0 ${hingeX},${winLeaf}"/>
+  <line class="thin" x1="${winL + winLeaf}" y1="${-T}" x2="${winL + winLeaf}" y2="0"/>
+  <!-- opening leaf, hinged left, swings into the room -->
+  <line class="thin" x1="${winL}" y1="0" x2="${winL}" y2="${winLeaf}"/>
+  <path class="swing" d="M${winL + winLeaf},0 A${winLeaf},${winLeaf} 0 0 1 ${winL},${winLeaf}"/>
   <text class="lbl muted" x="${W / 2}" y="${-T - 120}" text-anchor="middle">zahrada</text>
   <text class="lbl" x="${winL + winW / 2}" y="${winLeaf + 300}" text-anchor="middle">francouzské okno</text>
 
