@@ -56,7 +56,7 @@ const hingeX = winR;                          // leaf hinged at right jamb
 const doorY2 = H - doorFromBack;              // hinge (back-side jamb)
 const doorY1 = doorY2 - doorW;
 
-function plan(furniture = '') { return `
+function plan(furniture = '', hideRadLabel = false) { return `
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="-1150 -1250 4670 6350" role="img" aria-label="Půdorys pokoje 2500 × 4800 mm">
   <style>
     .wall { fill: #2a2925; }
@@ -103,7 +103,7 @@ function plan(furniture = '') { return `
 
   <!-- radiator on left wall -->
   <rect class="rad" x="0" y="${radFromTop}" width="${radDepth}" height="${radLen}"/>
-  <text class="lbl" x="${radDepth + 90}" y="${radFromTop + radLen / 2 + FS / 3}">topení</text>
+  ${hideRadLabel ? '' : `<text class="lbl" x="${radDepth + 90}" y="${radFromTop + radLen / 2 + FS / 3}">topení</text>`}
 
   ${furniture}
 
@@ -472,7 +472,7 @@ function render(src, vars) {
   return s;
 }
 
-const navrh = render('navrh.html', { PLAN_V1: plan(v1), PLAN_V2: plan(v2), PLAN_V3: plan(v3), ELEV_V3: elevation(), ELEV_RIGHT: elevRight(), ELEV_BACK: elevBack(), ELEV_WINDOW: elevWindow() });
+const navrh = render('navrh.html', { PLAN_V1: plan(v1), PLAN_V2: plan(v2), PLAN_V3: plan(v3, true), ELEV_V3: elevation(), ELEV_RIGHT: elevRight(), ELEV_BACK: elevBack(), ELEV_WINDOW: elevWindow() });
 mkdirSync(resolve(here, 'navrh'), { recursive: true });
 writeFileSync(resolve(here, 'navrh/index.html'), navrh);
 writeFileSync(resolve(here, '../build/preview-navrh.html'), navrh);
