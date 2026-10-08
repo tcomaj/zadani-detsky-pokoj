@@ -515,7 +515,11 @@
     .wall { fill: #2a2925; }
     .thin { stroke: #2a2925; stroke-width: 12; fill: none; }
     .furn { fill: #ece9e1; stroke: #2a2925; stroke-width: 12; }
-    .peg { fill: url(#dots); stroke: #2a2925; stroke-width: 8.399999999999999; }
+    .peg { fill: url(#dots); stroke: #b9b3a7; stroke-width: 7.199999999999999; }
+    .item { fill: #ffffff; stroke: #2a2925; stroke-width: 8.399999999999999; }
+    .slab { fill: #e6dfd0; stroke: #2a2925; stroke-width: 12; }
+    .shade { fill: url(#shade); }
+    .fig { fill: #d4cfc5; }
     .grille { stroke: #6b675f; stroke-width: 7.199999999999999; stroke-dasharray: 40 40; fill: none; }
     .dim line { stroke: #8a857b; stroke-width: 12; }
     .dim text, .lbl { font: 130px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif; fill: #3a3833; }
@@ -524,10 +528,14 @@
     .fsub { font: 95px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif; fill: #6b675f; }
   </style>
   <defs>
-    <pattern id="dots" width="100" height="100" patternUnits="userSpaceOnUse">
-      <rect width="100" height="100" fill="#f6f4ee"/>
-      <circle cx="50" cy="50" r="12" fill="#b9b3a7"/>
+    <pattern id="dots" width="80" height="80" patternUnits="userSpaceOnUse">
+      <rect width="80" height="80" fill="#ffffff"/>
+      <circle cx="40" cy="40" r="11" fill="#c9c3b7"/>
     </pattern>
+    <linearGradient id="shade" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#2a2925" stop-opacity=".18"/>
+      <stop offset="1" stop-color="#2a2925" stop-opacity="0"/>
+    </linearGradient>
   </defs>
 
   <!-- wall surface, floor, ceiling, side walls in section -->
@@ -545,30 +553,48 @@
   <!-- radiator -->
   <rect class="furn" x="400" y="2150" width="600" height="300"/>
   <line class="thin" x1="460" y1="2180" x2="460" y2="2420"/><line class="thin" x1="520" y1="2180" x2="520" y2="2420"/><line class="thin" x1="580" y1="2180" x2="580" y2="2420"/><line class="thin" x1="640" y1="2180" x2="640" y2="2420"/><line class="thin" x1="700" y1="2180" x2="700" y2="2420"/><line class="thin" x1="760" y1="2180" x2="760" y2="2420"/><line class="thin" x1="820" y1="2180" x2="820" y2="2420"/><line class="thin" x1="880" y1="2180" x2="880" y2="2420"/><line class="thin" x1="940" y1="2180" x2="940" y2="2420"/>
-  <text class="fsub" x="700" y="2600" text-anchor="middle">radiátor</text>
+  <text class="fsub" x="700" y="2580" text-anchor="middle">nízký radiátor</text>
 
   <!-- pegboard band -->
-  <rect class="peg" x="10" y="1140" width="740" height="560" rx="30"/><rect class="peg" x="770" y="1140" width="740" height="560" rx="30"/><rect class="peg" x="1530" y="1140" width="740" height="560" rx="30"/><rect class="peg" x="2290" y="1140" width="740" height="560" rx="30"/>
+  <rect class="peg" x="10" y="1140" width="740" height="560" rx="24"/><rect class="peg" x="770" y="1140" width="740" height="560" rx="24"/><rect class="peg" x="1530" y="1140" width="740" height="560" rx="24"/><rect class="peg" x="2290" y="1140" width="740" height="560" rx="24"/><rect class="item" x="300" y="1350" width="90" height="120" rx="14"/><rect class="item" x="410" y="1350" width="90" height="120" rx="14"/><rect class="item" x="1700" y="1400" width="520" height="26"/><rect class="item" x="1760" y="1290" width="70" height="110" rx="10"/><rect class="item" x="1850" y="1250" width="60" height="150" rx="10"/><path class="thin" d="M2650,1220 v60 q0,40 40,40 h20"/><path class="item" d="M2620,1320 h190 v170 q0,30 -30,30 h-130 q-30,0 -30,-30 z"/>
   <text class="fsub" x="1550" y="1080" text-anchor="middle">děrovaná deska SKÅDIS, 4 × 76 × 56 cm</text>
 
   <!-- chairs (behind the desk slab) -->
   <g class="thin">
-    <rect x="1300" y="2170" width="400" height="40" rx="15" fill="#fff"/>
-    <rect x="1320" y="1780" width="360" height="330" rx="40" fill="#fff"/>
-    <line x1="1330" y1="2210" x2="1310" y2="2600"/>
-    <line x1="1670" y1="2210" x2="1690" y2="2600"/>
+    <rect x="1110" y="2170" width="380" height="45" rx="18" fill="#fff"/>
+    <line x1="1150" y1="2170" x2="1150" y2="1800"/>
+    <line x1="1450" y1="2170" x2="1450" y2="1800"/>
+    <rect x="1130" y="1780" width="340" height="70" rx="30" fill="#fff"/>
+    <line x1="1150" y1="1960" x2="1450" y2="1960"/>
+    <line x1="1140" y1="2215" x2="1115" y2="2600"/>
+    <line x1="1460" y1="2215" x2="1485" y2="2600"/>
+    <line x1="1180" y1="2215" x2="1165" y2="2600" opacity=".45"/>
+    <line x1="1420" y1="2215" x2="1435" y2="2600" opacity=".45"/>
   </g><g class="thin">
-    <rect x="2400" y="2170" width="400" height="40" rx="15" fill="#fff"/>
-    <rect x="2420" y="1780" width="360" height="330" rx="40" fill="#fff"/>
-    <line x1="2430" y1="2210" x2="2410" y2="2600"/>
-    <line x1="2770" y1="2210" x2="2790" y2="2600"/>
+    <rect x="2110" y="2170" width="380" height="45" rx="18" fill="#fff"/>
+    <line x1="2150" y1="2170" x2="2150" y2="1800"/>
+    <line x1="2450" y1="2170" x2="2450" y2="1800"/>
+    <rect x="2130" y="1780" width="340" height="70" rx="30" fill="#fff"/>
+    <line x1="2150" y1="1960" x2="2450" y2="1960"/>
+    <line x1="2140" y1="2215" x2="2115" y2="2600"/>
+    <line x1="2460" y1="2215" x2="2485" y2="2600"/>
+    <line x1="2180" y1="2215" x2="2165" y2="2600" opacity=".45"/>
+    <line x1="2420" y1="2215" x2="2435" y2="2600" opacity=".45"/>
   </g>
 
-  <!-- floating desk slab -->
-  <rect class="furn" x="0" y="1840" width="3100" height="40"/>
-  <rect class="grille" x="400" y="1810" width="600" height="100"/>
+  <!-- floating desk slab with a soft shadow underneath -->
+  <rect class="shade" x="0" y="1880" width="3100" height="160"/>
+  <rect class="slab" x="0" y="1830" width="3100" height="50"/>
+  <rect class="grille" x="400" y="1800" width="600" height="110"/>
   <text class="fsub" x="700" y="2030" text-anchor="middle">mřížka v desce</text>
-  <text class="flbl" x="2100" y="2030" text-anchor="middle">zavěšený stůl 310 × 50, bez nohou</text>
+  <text class="flbl" x="2850" y="1795" text-anchor="middle">zavěšený stůl</text>
+  <text class="fsub" x="2850" y="2000" text-anchor="middle">310 × 50, bez nohou</text>
+  <g class="fig">
+    <circle cx="3900" cy="1550" r="95"/>
+    <path d="M3780,1670 q120,-60 240,0 l30,420 h-60 l-20,-200 l-30,560 h-70 l-15,-420 l-15,420 h-70 l-30,-560 l-20,200 h-60 z"/>
+  </g>
+  <text class="fsub" x="3900" y="2560" text-anchor="middle">dítě 115 cm</text>
+  <text class="lbl muted" x="80" y="300">← francouzské okno do zahrady</text>
 
   <!-- dimensions -->
   <g class="dim">

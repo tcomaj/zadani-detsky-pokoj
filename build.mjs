@@ -190,7 +190,7 @@ const v3 = [
 // ---------- elevation of the left (radiator) wall, variant C ----------
 function elevation() {
   const CH = 2600, L = 4800;
-  const deskL = 3100, deskZ = 720, deskT = 40;
+  const deskL = 3100, deskZ = 720, deskT = 50;
   const radX1 = 400, radX2 = 1000, radZ1 = 150, radZ2 = 450;
   const pegZ1 = 900, pegZ2 = 1460, pegW = 760, pegN = 4;
   const wardX = 4200;
@@ -198,12 +198,31 @@ function elevation() {
   let fins = '';
   for (let x = radX1 + 60; x < radX2; x += 60) fins += `<line class="thin" x1="${x}" y1="${z(radZ2) + 30}" x2="${x}" y2="${z(radZ1) - 30}"/>`;
   let pegs = '';
-  for (let i = 0; i < pegN; i++) pegs += `<rect class="peg" x="${i * pegW + 10}" y="${z(pegZ2)}" width="${pegW - 20}" height="${pegZ2 - pegZ1}" rx="30"/>`;
+  for (let i = 0; i < pegN; i++) pegs += `<rect class="peg" x="${i * pegW + 10}" y="${z(pegZ2)}" width="${pegW - 20}" height="${pegZ2 - pegZ1}" rx="24"/>`;
+  // a few things hanging on the pegboard: two cups, a hook with a bag, a small shelf
+  const cup = (x, zz) => `<rect class="item" x="${x}" y="${z(zz)}" width="90" height="120" rx="14"/>`;
+  const items = cup(300, 1250) + cup(410, 1250) +
+    `<rect class="item" x="1700" y="${z(1200)}" width="520" height="26"/>` +   // small shelf
+    `<rect class="item" x="1760" y="${z(1200) - 110}" width="70" height="110" rx="10"/>` +
+    `<rect class="item" x="1850" y="${z(1200) - 150}" width="60" height="150" rx="10"/>` +
+    `<path class="thin" d="M2650,${z(1380)} v60 q0,40 40,40 h20"/>` +         // hook
+    `<path class="item" d="M2620,${z(1280)} h190 v170 q0,30 -30,30 h-130 q-30,0 -30,-30 z"/>`; // bag
+  // child chair, front view
   const chair = (cx) => `<g class="thin">
-    <rect x="${cx - 200}" y="${z(430)}" width="400" height="40" rx="15" fill="#fff"/>
-    <rect x="${cx - 180}" y="${z(820)}" width="360" height="330" rx="40" fill="#fff"/>
-    <line x1="${cx - 170}" y1="${z(430) + 40}" x2="${cx - 190}" y2="${z(0)}"/>
-    <line x1="${cx + 170}" y1="${z(430) + 40}" x2="${cx + 190}" y2="${z(0)}"/>
+    <rect x="${cx - 190}" y="${z(430)}" width="380" height="45" rx="18" fill="#fff"/>
+    <line x1="${cx - 150}" y1="${z(430)}" x2="${cx - 150}" y2="${z(800)}"/>
+    <line x1="${cx + 150}" y1="${z(430)}" x2="${cx + 150}" y2="${z(800)}"/>
+    <rect x="${cx - 170}" y="${z(820)}" width="340" height="70" rx="30" fill="#fff"/>
+    <line x1="${cx - 150}" y1="${z(640)}" x2="${cx + 150}" y2="${z(640)}"/>
+    <line x1="${cx - 160}" y1="${z(430) + 45}" x2="${cx - 185}" y2="${z(0)}"/>
+    <line x1="${cx + 160}" y1="${z(430) + 45}" x2="${cx + 185}" y2="${z(0)}"/>
+    <line x1="${cx - 120}" y1="${z(430) + 45}" x2="${cx - 135}" y2="${z(0)}" opacity=".45"/>
+    <line x1="${cx + 120}" y1="${z(430) + 45}" x2="${cx + 135}" y2="${z(0)}" opacity=".45"/>
+  </g>`;
+  // child silhouette ~115 cm for scale
+  const kid = (cx) => `<g class="fig">
+    <circle cx="${cx}" cy="${z(1050)}" r="95"/>
+    <path d="M${cx - 120},${z(930)} q120,-60 240,0 l30,420 h-60 l-20,-200 l-30,560 h-70 l-15,-420 l-15,420 h-70 l-30,-560 l-20,200 h-60 z"/>
   </g>`;
   return `
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="-1150 -750 6950 4050" role="img" aria-label="Pohled na levou stěnu, varianta C">
@@ -211,7 +230,11 @@ function elevation() {
     .wall { fill: #2a2925; }
     .thin { stroke: #2a2925; stroke-width: ${SW}; fill: none; }
     .furn { fill: #ece9e1; stroke: #2a2925; stroke-width: ${SW}; }
-    .peg { fill: url(#dots); stroke: #2a2925; stroke-width: ${SW * 0.7}; }
+    .peg { fill: url(#dots); stroke: #b9b3a7; stroke-width: ${SW * 0.6}; }
+    .item { fill: #ffffff; stroke: #2a2925; stroke-width: ${SW * 0.7}; }
+    .slab { fill: #e6dfd0; stroke: #2a2925; stroke-width: ${SW}; }
+    .shade { fill: url(#shade); }
+    .fig { fill: #d4cfc5; }
     .grille { stroke: #6b675f; stroke-width: ${SW * 0.6}; stroke-dasharray: 40 40; fill: none; }
     .dim line { stroke: #8a857b; stroke-width: ${SW}; }
     .dim text, .lbl { font: ${FS}px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif; fill: #3a3833; }
@@ -220,10 +243,14 @@ function elevation() {
     .fsub { font: 95px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif; fill: #6b675f; }
   </style>
   <defs>
-    <pattern id="dots" width="100" height="100" patternUnits="userSpaceOnUse">
-      <rect width="100" height="100" fill="#f6f4ee"/>
-      <circle cx="50" cy="50" r="12" fill="#b9b3a7"/>
+    <pattern id="dots" width="80" height="80" patternUnits="userSpaceOnUse">
+      <rect width="80" height="80" fill="#ffffff"/>
+      <circle cx="40" cy="40" r="11" fill="#c9c3b7"/>
     </pattern>
+    <linearGradient id="shade" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#2a2925" stop-opacity=".18"/>
+      <stop offset="1" stop-color="#2a2925" stop-opacity="0"/>
+    </linearGradient>
   </defs>
 
   <!-- wall surface, floor, ceiling, side walls in section -->
@@ -241,20 +268,25 @@ function elevation() {
   <!-- radiator -->
   <rect class="furn" x="${radX1}" y="${z(radZ2)}" width="${radX2 - radX1}" height="${radZ2 - radZ1}"/>
   ${fins}
-  <text class="fsub" x="${(radX1 + radX2) / 2}" y="${z(radZ1) + 150}" text-anchor="middle">radiátor</text>
+  <text class="fsub" x="${(radX1 + radX2) / 2}" y="${z(radZ1) + 130}" text-anchor="middle">nízký radiátor</text>
 
   <!-- pegboard band -->
-  ${pegs}
+  ${pegs}${items}
   <text class="fsub" x="${deskL / 2}" y="${z(pegZ2) - 60}" text-anchor="middle">děrovaná deska SKÅDIS, 4 × 76 × 56 cm</text>
 
   <!-- chairs (behind the desk slab) -->
-  ${chair(1500)}${chair(2600)}
+  ${chair(1300)}${chair(2300)}
 
-  <!-- floating desk slab -->
-  <rect class="furn" x="0" y="${z(deskZ + deskT)}" width="${deskL}" height="${deskT}"/>
+  <!-- floating desk slab with a soft shadow underneath -->
+  <rect class="shade" x="0" y="${z(deskZ)}" width="${deskL}" height="160"/>
+  <rect class="slab" x="0" y="${z(deskZ + deskT)}" width="${deskL}" height="${deskT}"/>
   <rect class="grille" x="${radX1}" y="${z(deskZ + deskT) - 30}" width="${radX2 - radX1}" height="${deskT + 60}"/>
   <text class="fsub" x="${(radX1 + radX2) / 2}" y="${z(deskZ) + 150}" text-anchor="middle">mřížka v desce</text>
-  <text class="flbl" x="${deskL / 2 + 550}" y="${z(deskZ) + 150}" text-anchor="middle">zavěšený stůl 310 × 50, bez nohou</text>
+  <text class="flbl" x="2850" y="${z(deskZ + deskT) - 35}" text-anchor="middle">zavěšený stůl</text>
+  <text class="fsub" x="2850" y="${z(deskZ) + 120}" text-anchor="middle">310 × 50, bez nohou</text>
+  ${kid(3900)}
+  <text class="fsub" x="3900" y="${z(0) - 40}" text-anchor="middle">dítě 115 cm</text>
+  <text class="lbl muted" x="80" y="${z(2300)}">← francouzské okno do zahrady</text>
 
   <!-- dimensions -->
   ${dimH(0, deskL, -400, '3 100', 0, 0)}
