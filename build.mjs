@@ -192,21 +192,31 @@ function elevation() {
   const CH = 2600, L = 4800;
   const deskL = 3100, deskZ = 720, deskT = 50;
   const radX1 = 400, radX2 = 1000, radZ1 = 150, radZ2 = 450;
-  const pegZ1 = 900, pegZ2 = 1460, pegW = 760, pegN = 4;
+  const pegZ1 = 900, pegZ2 = 1350;            // custom one-piece pegboard
+  const ledgeZ = 1350, ledgeT = 25, bookTop = 1620; // picture ledge with face-out books
+  const cabZ1 = 1650, cabZ2 = CH, cabN = 4;   // upper cabinets to the ceiling
   const wardX = 4200;
   const z = (v) => CH - v; // mm above floor -> svg y
   let fins = '';
   for (let x = radX1 + 60; x < radX2; x += 60) fins += `<line class="thin" x1="${x}" y1="${z(radZ2) + 30}" x2="${x}" y2="${z(radZ1) - 30}"/>`;
-  let pegs = '';
-  for (let i = 0; i < pegN; i++) pegs += `<rect class="peg" x="${i * pegW + 10}" y="${z(pegZ2)}" width="${pegW - 20}" height="${pegZ2 - pegZ1}" rx="24"/>`;
+  const pegs = `<rect class="peg" x="0" y="${z(pegZ2)}" width="${deskL}" height="${pegZ2 - pegZ1}"/>`;
   // a few things hanging on the pegboard: two cups, a hook with a bag, a small shelf
   const cup = (x, zz) => `<rect class="item" x="${x}" y="${z(zz)}" width="90" height="120" rx="14"/>`;
-  const items = cup(300, 1250) + cup(410, 1250) +
-    `<rect class="item" x="1700" y="${z(1200)}" width="520" height="26"/>` +   // small shelf
-    `<rect class="item" x="1760" y="${z(1200) - 110}" width="70" height="110" rx="10"/>` +
-    `<rect class="item" x="1850" y="${z(1200) - 150}" width="60" height="150" rx="10"/>` +
-    `<path class="thin" d="M2650,${z(1380)} v60 q0,40 40,40 h20"/>` +         // hook
-    `<path class="item" d="M2620,${z(1280)} h190 v170 q0,30 -30,30 h-130 q-30,0 -30,-30 z"/>`; // bag
+  const items = cup(300, 1200) + cup(410, 1200) +
+    `<rect class="item" x="1700" y="${z(1150)}" width="520" height="26"/>` +   // small shelf
+    `<rect class="item" x="1760" y="${z(1150) - 110}" width="70" height="110" rx="10"/>` +
+    `<rect class="item" x="1850" y="${z(1150) - 150}" width="60" height="150" rx="10"/>` +
+    `<path class="thin" d="M2650,${z(1300)} v60 q0,40 40,40 h20"/>` +         // hook
+    `<path class="item" d="M2620,${z(1200)} h190 v170 q0,30 -30,30 h-130 q-30,0 -30,-30 z"/>`; // bag
+  // picture ledge + face-out books, upper cabinets, LED strip glow
+  let books = '';
+  const bookXs = [120, 330, 560, 1080, 1930, 2350, 2600, 2800];
+  bookXs.forEach((x, i) => { const h = 200 + (i % 3) * 35, w = 160 + (i % 2) * 30; books += `<rect class="book" x="${x}" y="${z(ledgeZ + ledgeT + h)}" width="${w}" height="${h}" rx="8"/>`; });
+  const ledge = `<rect class="slab" x="0" y="${z(ledgeZ + ledgeT)}" width="${deskL}" height="${ledgeT}"/>`;
+  let cabs = `<rect class="furn" x="0" y="${z(cabZ2)}" width="${deskL}" height="${cabZ2 - cabZ1}"/>`;
+  for (let i = 1; i < cabN; i++) cabs += `<line class="door" x1="${(deskL / cabN) * i}" y1="${z(cabZ2)}" x2="${(deskL / cabN) * i}" y2="${z(cabZ1)}"/>`;
+  const led = `<rect class="glow" x="0" y="${z(cabZ1)}" width="${deskL}" height="260"/>` +
+    `<line x1="40" y1="${z(cabZ1) + 8}" x2="${deskL - 40}" y2="${z(cabZ1) + 8}" stroke="#e8c76a" stroke-width="${SW * 1.5}"/>`;
   // child chair, front view
   const chair = (cx) => `<g class="thin">
     <rect x="${cx - 190}" y="${z(430)}" width="380" height="45" rx="18" fill="#fff"/>
@@ -235,12 +245,15 @@ function elevation() {
     .slab { fill: #e6dfd0; stroke: #2a2925; stroke-width: ${SW}; }
     .shade { fill: url(#shade); }
     .fig { fill: #d4cfc5; }
+    .book { fill: #ffffff; stroke: #2a2925; stroke-width: ${SW * 0.6}; }
+    .door { stroke: #2a2925; stroke-width: ${SW * 0.7}; stroke-dasharray: 40 40; }
+    .glow { fill: url(#glow); }
     .grille { stroke: #6b675f; stroke-width: ${SW * 0.6}; stroke-dasharray: 40 40; fill: none; }
     .dim line { stroke: #8a857b; stroke-width: ${SW}; }
     .dim text, .lbl { font: ${FS}px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif; fill: #3a3833; }
     .lbl.muted { fill: #8a857b; }
-    .flbl { font: 600 115px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif; fill: #2a2925; }
-    .fsub { font: 95px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif; fill: #6b675f; }
+    .flbl { font: 600 115px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif; fill: #2a2925; paint-order: stroke; stroke: #ffffff; stroke-width: 50px; stroke-linejoin: round; }
+    .fsub { font: 95px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif; fill: #6b675f; paint-order: stroke; stroke: #ffffff; stroke-width: 50px; stroke-linejoin: round; }
   </style>
   <defs>
     <pattern id="dots" width="80" height="80" patternUnits="userSpaceOnUse">
@@ -251,6 +264,10 @@ function elevation() {
       <stop offset="0" stop-color="#2a2925" stop-opacity=".18"/>
       <stop offset="1" stop-color="#2a2925" stop-opacity="0"/>
     </linearGradient>
+    <linearGradient id="glow" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#f3d98a" stop-opacity=".55"/>
+      <stop offset="1" stop-color="#f3d98a" stop-opacity="0"/>
+    </linearGradient>
   </defs>
 
   <!-- wall surface, floor, ceiling, side walls in section -->
@@ -259,7 +276,7 @@ function elevation() {
   <rect class="wall" x="${-T}" y="${CH}" width="${L + 2 * T}" height="${T}"/>
   <rect class="wall" x="${-T}" y="0" width="${T}" height="${CH}"/>
   <rect class="wall" x="${L}" y="0" width="${T}" height="${CH}"/>
-  <text class="lbl muted" x="${L + T + 110}" y="${CH / 2}" text-anchor="middle" transform="rotate(90 ${L + T + 110} ${CH / 2})">okenní stěna</text>
+  <text class="lbl muted" x="${L + T + 110}" y="${CH / 2}" text-anchor="middle" transform="rotate(90 ${L + T + 110} ${CH / 2})">okenní stěna, francouzské okno do zahrady</text>
 
   <!-- geometry is modelled from the window corner (x = 0) and mirrored, because seen from
        inside the room the window is on the viewer's right and the back wall on the left -->
@@ -267,7 +284,9 @@ function elevation() {
     <rect class="furn" x="${wardX}" y="0" width="${L - wardX}" height="${CH}"/>
     <rect class="furn" x="${radX1}" y="${z(radZ2)}" width="${radX2 - radX1}" height="${radZ2 - radZ1}"/>
     ${fins}
+    ${cabs}${led}
     ${pegs}${items}
+    ${ledge}${books}
     ${chair(1300)}${chair(2300)}
     <rect class="shade" x="0" y="${z(deskZ)}" width="${deskL}" height="160"/>
     <rect class="slab" x="0" y="${z(deskZ + deskT)}" width="${deskL}" height="${deskT}"/>
@@ -278,12 +297,14 @@ function elevation() {
   <!-- labels (x mirrored by hand: m(x) = L - x) -->
   <text class="flbl" x="${L - wardX - 300}" y="${CH / 2}" text-anchor="middle" transform="rotate(-90 ${L - wardX - 300} ${CH / 2})">skříňová stěna (bok)</text>
   <text class="fsub" x="${L - (radX1 + radX2) / 2}" y="${z(radZ1) + 130}" text-anchor="middle">nízký radiátor</text>
-  <text class="fsub" x="${L - deskL / 2}" y="${z(pegZ2) - 60}" text-anchor="middle">děrovaná deska SKÅDIS, 4 × 76 × 56 cm</text>
+  <text class="fsub" x="${L - deskL / 2}" y="${z(pegZ1) - 50}" text-anchor="middle">děrovaná deska na míru, 310 × 45 cm, rastr 40 mm</text>
+  <text class="fsub" x="${L - 1500}" y="${z(ledgeZ + ledgeT + 120)}" text-anchor="middle">římsa na knížky</text>
+  <text class="flbl" x="${L - deskL / 2}" y="${z((cabZ1 + cabZ2) / 2) + 40}" text-anchor="middle">horní skříňky ke stropu, hloubka 35, bez úchytek</text>
+  <text class="fsub" x="${L - 60}" y="${z(cabZ1) - 50}" text-anchor="end">LED pás pod skříňkami</text>
   <text class="fsub" x="${L - (radX1 + radX2) / 2}" y="${z(deskZ) + 150}" text-anchor="middle">mřížka v desce</text>
   <text class="flbl" x="${L - 2850}" y="${z(deskZ + deskT) - 35}" text-anchor="middle">zavěšený stůl</text>
   <text class="fsub" x="${L - 2850}" y="${z(deskZ) + 120}" text-anchor="middle">310 × 50, bez nohou</text>
   <text class="fsub" x="${L - 3900}" y="${z(0) - 40}" text-anchor="middle">dítě 115 cm</text>
-  <text class="lbl muted" x="${L - 80}" y="${z(2300)}" text-anchor="end">francouzské okno do zahrady →</text>
 
   <!-- dimensions -->
   ${dimH(0, L - wardX, -400, '600', 0, 0)}
@@ -291,7 +312,9 @@ function elevation() {
   ${dimH(L - deskL, L, -400, '3 100', 0, 0)}
   ${dimV(L + 520, z(deskZ), z(0), '720', L + T, L + T, 1)}
   ${dimV(-820, z(CH), z(0), '2 600', -T, -T)}
-  ${dimV(-520, z(pegZ2), z(pegZ1), '560', -T, -T)}
+  ${dimV(-520, z(cabZ2), z(cabZ1), '950', -T, -T)}
+  ${dimV(-520, z(cabZ1), z(ledgeZ), '300', -T, -T)}
+  ${dimV(-520, z(ledgeZ), z(pegZ1), '450', -T, -T)}
   ${dimV(-520, z(pegZ1), z(deskZ), '180', -T, -T)}
   <g class="dim">
     <line x1="0" y1="${CH + 520}" x2="1000" y2="${CH + 520}"/>

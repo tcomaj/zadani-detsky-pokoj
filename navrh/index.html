@@ -520,12 +520,15 @@
     .slab { fill: #e6dfd0; stroke: #2a2925; stroke-width: 12; }
     .shade { fill: url(#shade); }
     .fig { fill: #d4cfc5; }
+    .book { fill: #ffffff; stroke: #2a2925; stroke-width: 7.199999999999999; }
+    .door { stroke: #2a2925; stroke-width: 8.399999999999999; stroke-dasharray: 40 40; }
+    .glow { fill: url(#glow); }
     .grille { stroke: #6b675f; stroke-width: 7.199999999999999; stroke-dasharray: 40 40; fill: none; }
     .dim line { stroke: #8a857b; stroke-width: 12; }
     .dim text, .lbl { font: 130px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif; fill: #3a3833; }
     .lbl.muted { fill: #8a857b; }
-    .flbl { font: 600 115px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif; fill: #2a2925; }
-    .fsub { font: 95px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif; fill: #6b675f; }
+    .flbl { font: 600 115px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif; fill: #2a2925; paint-order: stroke; stroke: #ffffff; stroke-width: 50px; stroke-linejoin: round; }
+    .fsub { font: 95px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif; fill: #6b675f; paint-order: stroke; stroke: #ffffff; stroke-width: 50px; stroke-linejoin: round; }
   </style>
   <defs>
     <pattern id="dots" width="80" height="80" patternUnits="userSpaceOnUse">
@@ -536,6 +539,10 @@
       <stop offset="0" stop-color="#2a2925" stop-opacity=".18"/>
       <stop offset="1" stop-color="#2a2925" stop-opacity="0"/>
     </linearGradient>
+    <linearGradient id="glow" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#f3d98a" stop-opacity=".55"/>
+      <stop offset="1" stop-color="#f3d98a" stop-opacity="0"/>
+    </linearGradient>
   </defs>
 
   <!-- wall surface, floor, ceiling, side walls in section -->
@@ -544,7 +551,7 @@
   <rect class="wall" x="-150" y="2600" width="5100" height="150"/>
   <rect class="wall" x="-150" y="0" width="150" height="2600"/>
   <rect class="wall" x="4800" y="0" width="150" height="2600"/>
-  <text class="lbl muted" x="5060" y="1300" text-anchor="middle" transform="rotate(90 5060 1300)">okenní stěna</text>
+  <text class="lbl muted" x="5060" y="1300" text-anchor="middle" transform="rotate(90 5060 1300)">okenní stěna, francouzské okno do zahrady</text>
 
   <!-- geometry is modelled from the window corner (x = 0) and mirrored, because seen from
        inside the room the window is on the viewer's right and the back wall on the left -->
@@ -552,7 +559,9 @@
     <rect class="furn" x="4200" y="0" width="600" height="2600"/>
     <rect class="furn" x="400" y="2150" width="600" height="300"/>
     <line class="thin" x1="460" y1="2180" x2="460" y2="2420"/><line class="thin" x1="520" y1="2180" x2="520" y2="2420"/><line class="thin" x1="580" y1="2180" x2="580" y2="2420"/><line class="thin" x1="640" y1="2180" x2="640" y2="2420"/><line class="thin" x1="700" y1="2180" x2="700" y2="2420"/><line class="thin" x1="760" y1="2180" x2="760" y2="2420"/><line class="thin" x1="820" y1="2180" x2="820" y2="2420"/><line class="thin" x1="880" y1="2180" x2="880" y2="2420"/><line class="thin" x1="940" y1="2180" x2="940" y2="2420"/>
-    <rect class="peg" x="10" y="1140" width="740" height="560" rx="24"/><rect class="peg" x="770" y="1140" width="740" height="560" rx="24"/><rect class="peg" x="1530" y="1140" width="740" height="560" rx="24"/><rect class="peg" x="2290" y="1140" width="740" height="560" rx="24"/><rect class="item" x="300" y="1350" width="90" height="120" rx="14"/><rect class="item" x="410" y="1350" width="90" height="120" rx="14"/><rect class="item" x="1700" y="1400" width="520" height="26"/><rect class="item" x="1760" y="1290" width="70" height="110" rx="10"/><rect class="item" x="1850" y="1250" width="60" height="150" rx="10"/><path class="thin" d="M2650,1220 v60 q0,40 40,40 h20"/><path class="item" d="M2620,1320 h190 v170 q0,30 -30,30 h-130 q-30,0 -30,-30 z"/>
+    <rect class="furn" x="0" y="0" width="3100" height="950"/><line class="door" x1="775" y1="0" x2="775" y2="950"/><line class="door" x1="1550" y1="0" x2="1550" y2="950"/><line class="door" x1="2325" y1="0" x2="2325" y2="950"/><rect class="glow" x="0" y="950" width="3100" height="260"/><line x1="40" y1="958" x2="3060" y2="958" stroke="#e8c76a" stroke-width="18"/>
+    <rect class="peg" x="0" y="1250" width="3100" height="450"/><rect class="item" x="300" y="1400" width="90" height="120" rx="14"/><rect class="item" x="410" y="1400" width="90" height="120" rx="14"/><rect class="item" x="1700" y="1450" width="520" height="26"/><rect class="item" x="1760" y="1340" width="70" height="110" rx="10"/><rect class="item" x="1850" y="1300" width="60" height="150" rx="10"/><path class="thin" d="M2650,1300 v60 q0,40 40,40 h20"/><path class="item" d="M2620,1400 h190 v170 q0,30 -30,30 h-130 q-30,0 -30,-30 z"/>
+    <rect class="slab" x="0" y="1225" width="3100" height="25"/><rect class="book" x="120" y="1025" width="160" height="200" rx="8"/><rect class="book" x="330" y="990" width="190" height="235" rx="8"/><rect class="book" x="560" y="955" width="160" height="270" rx="8"/><rect class="book" x="1080" y="1025" width="190" height="200" rx="8"/><rect class="book" x="1930" y="990" width="160" height="235" rx="8"/><rect class="book" x="2350" y="955" width="190" height="270" rx="8"/><rect class="book" x="2600" y="1025" width="160" height="200" rx="8"/><rect class="book" x="2800" y="990" width="190" height="235" rx="8"/>
     <g class="thin">
     <rect x="1110" y="2170" width="380" height="45" rx="18" fill="#fff"/>
     <line x1="1150" y1="2170" x2="1150" y2="1800"/>
@@ -586,12 +595,14 @@
   <!-- labels (x mirrored by hand: m(x) = L - x) -->
   <text class="flbl" x="300" y="1300" text-anchor="middle" transform="rotate(-90 300 1300)">skříňová stěna (bok)</text>
   <text class="fsub" x="4100" y="2580" text-anchor="middle">nízký radiátor</text>
-  <text class="fsub" x="3250" y="1080" text-anchor="middle">děrovaná deska SKÅDIS, 4 × 76 × 56 cm</text>
+  <text class="fsub" x="3250" y="1650" text-anchor="middle">děrovaná deska na míru, 310 × 45 cm, rastr 40 mm</text>
+  <text class="fsub" x="3300" y="1105" text-anchor="middle">římsa na knížky</text>
+  <text class="flbl" x="3250" y="515" text-anchor="middle">horní skříňky ke stropu, hloubka 35, bez úchytek</text>
+  <text class="fsub" x="4740" y="900" text-anchor="end">LED pás pod skříňkami</text>
   <text class="fsub" x="4100" y="2030" text-anchor="middle">mřížka v desce</text>
   <text class="flbl" x="1950" y="1795" text-anchor="middle">zavěšený stůl</text>
   <text class="fsub" x="1950" y="2000" text-anchor="middle">310 × 50, bez nohou</text>
   <text class="fsub" x="900" y="2560" text-anchor="middle">dítě 115 cm</text>
-  <text class="lbl muted" x="4720" y="300" text-anchor="end">francouzské okno do zahrady →</text>
 
   <!-- dimensions -->
   <g class="dim">
@@ -630,11 +641,25 @@
     <text x="-865" y="1300" text-anchor="middle" transform="rotate(-90 -865 1300)">2 600</text>
   </g>
   <g class="dim">
-    <line x1="-150" y1="1140" x2="-440" y2="1140"/>
+    <line x1="-150" y1="0" x2="-440" y2="0"/>
+    <line x1="-150" y1="950" x2="-440" y2="950"/>
+    <line x1="-520" y1="0" x2="-520" y2="950"/>
+    <line x1="-575" y1="55" x2="-465" y2="-55" transform="rotate(0 -520 0)"/><line x1="-575" y1="1005" x2="-465" y2="895" transform="rotate(0 -520 950)"/>
+    <text x="-565" y="475" text-anchor="middle" transform="rotate(-90 -565 475)">950</text>
+  </g>
+  <g class="dim">
+    <line x1="-150" y1="950" x2="-440" y2="950"/>
+    <line x1="-150" y1="1250" x2="-440" y2="1250"/>
+    <line x1="-520" y1="950" x2="-520" y2="1250"/>
+    <line x1="-575" y1="1005" x2="-465" y2="895" transform="rotate(0 -520 950)"/><line x1="-575" y1="1305" x2="-465" y2="1195" transform="rotate(0 -520 1250)"/>
+    <text x="-565" y="1100" text-anchor="middle" transform="rotate(-90 -565 1100)">300</text>
+  </g>
+  <g class="dim">
+    <line x1="-150" y1="1250" x2="-440" y2="1250"/>
     <line x1="-150" y1="1700" x2="-440" y2="1700"/>
-    <line x1="-520" y1="1140" x2="-520" y2="1700"/>
-    <line x1="-575" y1="1195" x2="-465" y2="1085" transform="rotate(0 -520 1140)"/><line x1="-575" y1="1755" x2="-465" y2="1645" transform="rotate(0 -520 1700)"/>
-    <text x="-565" y="1420" text-anchor="middle" transform="rotate(-90 -565 1420)">560</text>
+    <line x1="-520" y1="1250" x2="-520" y2="1700"/>
+    <line x1="-575" y1="1305" x2="-465" y2="1195" transform="rotate(0 -520 1250)"/><line x1="-575" y1="1755" x2="-465" y2="1645" transform="rotate(0 -520 1700)"/>
+    <text x="-565" y="1475" text-anchor="middle" transform="rotate(-90 -565 1475)">450</text>
   </g>
   <g class="dim">
     <line x1="-150" y1="1700" x2="-440" y2="1700"/>
@@ -652,12 +677,16 @@
     <ul>
       <li>Deska 310 × 50 cm zavěšená na skrytých konzolách, výška 72 cm. Pro předškoláka zatím židle s nastavitelnou výškou a stupátkem pod nohy; deska se nemění, roste jen židle.</li>
       <li>Radiátor zůstává pod deskou, nad ním v desce větrací mřížka (na pohledu čárkovaně).</li>
-      <li>Nad deskou souvislý pás děrovaných desek SKÅDIS, 4 kusy 76 × 56 cm, spodní hrana 18 cm nad stolem. Doplňky (háčky, poličky, kelímky) si kluci přendávají sami.</li>
-      <li>Vpravo bok skříňové stěny, od podlahy ke stropu.</li>
+      <li>Nad deskou jeden kus děrované desky na míru 310 × 45 cm (lakovaná MDF nebo březová překližka), výška 90–135 cm. Otvory 5 mm v rastru 40 mm, aby pasovaly doplňky IKEA SKÅDIS. Háčky, poličky a kelímky si kluci přendávají sami.</li>
+      <li>Nad děrovanou deskou mělká římsa na knížky (12 cm, s lištou), knížky obálkou dopředu, 135–165 cm. Jediný otevřený úložný prvek v pokoji.</li>
+      <li>Nad římsou horní skříňky až ke stropu, 165–260 cm, hloubka 35 cm, ploché matné dveře bez úchytek v barvě stěny. Uzavřený úložný prostor na věci, které nejsou potřeba každý den.</li>
+      <li>Pod skříňkami LED pás, osvětlí pracovní desku bez lampy na stole.</li>
+      <li>Stůl, děrovaná deska, římsa a skříňky jsou jedna vestavěná sestava v délce 310 cm, končí před oknem. Jedna matná barva + jedno dřevo (deska stolu a římsa), aby stěna nepůsobila těžce.</li>
+      <li>Vlevo bok skříňové stěny, od podlahy ke stropu.</li>
     </ul>
     <h3>Popis pro generování obrázku</h3>
     <p class="sub">Text, který jde vložit do AI generátoru obrázků (anglicky, bývá spolehlivější).</p>
-    <div class="box"><p>Interior photo of a small children's room, 2.5 m wide and 4.8 m long, ceiling 2.6 m, oak plank floor, white walls. View along the left wall: a 3.1 m long wall-mounted floating desk, 50 cm deep, no legs, light oak top, 72 cm high, running from the corner next to a floor-to-ceiling french window out to the garden. A low white radiator sits under the desk near the window with a slim ventilation grille in the desk top above it. Above the desk, a continuous band of four white IKEA SKÅDIS pegboards with a few hooks and small cups, nothing cluttered. Two wooden children's chairs. At the far end of the room a floor-to-ceiling built-in wardrobe wall across the full width, flat matte doors in a muted sage green, no handles. On the opposite wall a single white IKEA SLÄKT bed with drawers underneath. Lots of free floor, calm neutral timeless style, natural daylight, no toys on display, photorealistic, wide-angle, eye level.</p></div>
+    <div class="box"><p>Interior photo of a small children's room, 2.5 m wide and 4.8 m long, ceiling 2.6 m, oak plank floor, white walls. View along the left wall: a 3.1 m long wall-mounted floating desk, 50 cm deep, no legs, light oak top, 72 cm high, running from the corner next to a floor-to-ceiling french window out to the garden. A low white radiator sits under the desk near the window with a slim ventilation grille in the desk top above it. Above the desk a built-in wall unit the same length as the desk: a custom one-piece white pegboard panel from 90 to 135 cm with a few hooks and small cups, above it a shallow picture ledge with children's books facing forward, and above that flat matte white upper cabinets to the ceiling with no handles, warm LED strip under the cabinets lighting the desk. Two wooden children's chairs. At the far end of the room a floor-to-ceiling built-in wardrobe wall across the full width, flat matte doors in a muted sage green, no handles. On the opposite wall a single white IKEA SLÄKT bed with drawers underneath. Lots of free floor, calm neutral timeless style, natural daylight, no toys on display, photorealistic, wide-angle, eye level.</p></div>
   </section>
 
   <section id="pozn">
