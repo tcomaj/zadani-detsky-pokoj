@@ -173,18 +173,19 @@ const v2 = [
 ].join('');
 
 // Variant C: one SLÄKT bed with pull-out on the right wall, long desk on the radiator wall
-const slaktL = 2060, slaktW = 960, slaktOut = 1890;
+const slaktL = 2060, slaktW = 960, slaktOut = 1890, slaktY = 1000;
 const v3 = [
   wardrobe(0, 4200, 2500, 600, 'skříňová stěna', '250 × 60, ke stropu', 4),
-  `<rect class="pullout" x="${W - slaktOut}" y="600" width="${slaktOut - slaktW}" height="${slaktL}" rx="40"/>` +
-  `<text class="fsub" x="${W - slaktOut + (slaktOut - slaktW) / 2}" y="${600 + slaktL / 2 - 60}" text-anchor="middle">přistýlka</text>` +
-  `<text class="fsub" x="${W - slaktOut + (slaktOut - slaktW) / 2}" y="${600 + slaktL / 2 + 70}" text-anchor="middle">(vysunutá na noc)</text>`,
-  bed(W - slaktW, 600, slaktW, slaktL, 'SLÄKT', '96 × 206', 'bottom'),
-  desk(0, 300, 500, 2800, 'stůl', '280 × 50, zavěšený', [[760, 1300], [760, 2500]]),
+  `<rect class="pullout" x="${W - slaktOut}" y="${slaktY}" width="${slaktOut - slaktW}" height="${slaktL}" rx="40"/>` +
+  `<text class="fsub" x="${W - slaktOut + (slaktOut - slaktW) / 2}" y="${slaktY + slaktL / 2 - 60}" text-anchor="middle">přistýlka</text>` +
+  `<text class="fsub" x="${W - slaktOut + (slaktOut - slaktW) / 2}" y="${slaktY + slaktL / 2 + 70}" text-anchor="middle">(vysunutá na noc)</text>`,
+  bed(W - slaktW, slaktY, slaktW, slaktL, 'SLÄKT', '96 × 206', 'bottom'),
+  desk(0, 0, 550, 3100, 'stůl', '310 × 55, zavěšený', [[800, 1500], [800, 2600]]),
+  zone(1500, 500, 'průchod k oknu'),
   // ventilation grille in the desk top above the low radiator
-  Array.from({ length: 7 }, (_, i) => `<line class="grille" x1="140" y1="${430 + i * 90}" x2="440" y2="${430 + i * 90}"/>`).join('') +
-  `<text class="fsub" x="250" y="1180" text-anchor="middle">mřížka</text>`,
-  zone(1400, 3450, 'volná plocha'),
+  Array.from({ length: 7 }, (_, i) => `<line class="grille" x1="140" y1="${430 + i * 90}" x2="470" y2="${430 + i * 90}"/>`).join('') +
+  `<text class="fsub" x="275" y="1180" text-anchor="middle">mřížka</text>`,
+  zone(1400, 3650, 'volná plocha'),
 ].join('');
 
 // ---------- render pages ----------
