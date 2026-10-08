@@ -387,7 +387,10 @@ function elevRight() {
   <rect class="thin" x="${dx1 + 60}" y="${zz(1990)}" width="${dx2 - dx1 - 120}" height="1990"/>
   <circle class="thin" cx="${dx2 - 180}" cy="${zz(1050)}" r="30"/>
   <text class="flbl" x="${(dx1 + dx2) / 2}" y="${zz(1400)}" text-anchor="middle">vstup</text>
-  <text class="fsub" x="${(dx1 + dx2) / 2}" y="${zz(1250)}" text-anchor="middle">dveře 90 cm</text>`;
+  <text class="fsub" x="${(dx1 + dx2) / 2}" y="${zz(1250)}" text-anchor="middle">dveře 90 cm</text>
+  <rect class="thin" x="${bx1 + 300}" y="${zz(1700)}" width="420" height="520"/>
+  <rect class="thin" x="${bx1 + 900}" y="${zz(1750)}" width="520" height="620"/>
+  <text class="fsub" x="${bx1 + 1200}" y="${zz(1850)}" text-anchor="middle">obrazy</text>`;
   const ward = `
   <rect class="furn" x="${wx}" y="0" width="${L - wx}" height="${CH}"/>
   <text class="flbl" x="${wx + 300}" y="${CH / 2}" text-anchor="middle" transform="rotate(-90 ${wx + 300} ${CH / 2})">skříňová stěna (bok)</text>`;
@@ -412,7 +415,7 @@ function elevBack() {
   ${doors}
   <line class="door" x1="0" y1="${zz(800)}" x2="${L}" y2="${zz(800)}"/>
   <text class="flbl" x="${L / 2}" y="${zz(1700)}" text-anchor="middle">skříňová stěna 250 × 60, ke stropu</text>
-  <text class="fsub" x="${L / 2}" y="${zz(1560)}" text-anchor="middle">4 hladké dveře bez úchytek, uvnitř tyč + police</text>
+  <text class="fsub" x="${L / 2}" y="${zz(1560)}" text-anchor="middle">4 hladké dveře s dlouhými svislými madly, uvnitř tyč + police</text>
   <text class="fsub" x="1780" y="${zz(420)}" text-anchor="middle">pod linkou výsuvné zásuvky na Lego</text>`;
   // foreground: bed head end on the left (x = 2500 - 2500..1540 -> 0..960), desk unit side on the right
   const fore = `
