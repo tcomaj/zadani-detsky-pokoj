@@ -324,6 +324,138 @@ function elevation() {
 </svg>`;
 }
 
+// ---------- the other three walls, variant C (all seen from inside the room) ----------
+const CH = 2600;
+const zz = (v) => CH - v;
+const elevStyle = `
+  <style>
+    .wall { fill: #2a2925; }
+    .thin { stroke: #2a2925; stroke-width: ${SW}; fill: none; }
+    .furn { fill: #ece9e1; stroke: #2a2925; stroke-width: ${SW}; }
+    .bedf { fill: #e2e7ea; stroke: #2a2925; stroke-width: ${SW}; }
+    .fore { fill: #e4e1da; stroke: #b9b3a7; stroke-width: ${SW * 0.7}; }
+    .glass { fill: #eef3f5; stroke: #2a2925; stroke-width: ${SW}; }
+    .door { stroke: #2a2925; stroke-width: ${SW * 0.7}; stroke-dasharray: 40 40; }
+    .fig { fill: #d4cfc5; }
+    .dim line { stroke: #8a857b; stroke-width: ${SW}; }
+    .dim text, .lbl { font: ${FS}px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif; fill: #3a3833; }
+    .lbl.muted { fill: #8a857b; }
+    .flbl { font: 600 115px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif; fill: #2a2925; paint-order: stroke; stroke: #ffffff; stroke-width: 50px; stroke-linejoin: round; }
+    .fsub { font: 95px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif; fill: #6b675f; paint-order: stroke; stroke: #ffffff; stroke-width: 50px; stroke-linejoin: round; }
+  </style>`;
+// room frame: white wall surface, section of ceiling/floor/side walls, rotated side labels, 2600 dim, scale bar
+function elevFrame(L, leftLabel, rightLabel, body, aria) {
+  const vbW = L + 2300, vbX = -1150;
+  return `
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="${vbX} -750 ${vbW} 4050" role="img" aria-label="${aria}">
+  ${elevStyle}
+  <rect x="0" y="0" width="${L}" height="${CH}" fill="#ffffff"/>
+  ${body}
+  <rect class="wall" x="${-T}" y="${-T}" width="${L + 2 * T}" height="${T}"/>
+  <rect class="wall" x="${-T}" y="${CH}" width="${L + 2 * T}" height="${T}"/>
+  <rect class="wall" x="${-T}" y="0" width="${T}" height="${CH}"/>
+  <rect class="wall" x="${L}" y="0" width="${T}" height="${CH}"/>
+  <text class="lbl muted" x="${-T - 60}" y="${CH / 2}" text-anchor="middle" transform="rotate(-90 ${-T - 60} ${CH / 2})">${leftLabel}</text>
+  <text class="lbl muted" x="${L + T + 110}" y="${CH / 2}" text-anchor="middle" transform="rotate(90 ${L + T + 110} ${CH / 2})">${rightLabel}</text>
+  ${dimV(-820, zz(CH), zz(0), '2 600', -T, -T)}
+  <g class="dim">
+    <line x1="0" y1="${CH + 520}" x2="1000" y2="${CH + 520}"/>
+    ${tick(0, CH + 520, 0)}${tick(1000, CH + 520, 0)}
+    <text x="500" y="${CH + 520 - 40}" text-anchor="middle">1 m</text>
+  </g>
+</svg>`;
+}
+const kidFig = (cx) => `<g class="fig">
+    <circle cx="${cx}" cy="${zz(1050)}" r="95"/>
+    <path d="M${cx - 120},${zz(930)} q120,-60 240,0 l30,420 h-60 l-20,-200 l-30,560 h-70 l-15,-420 l-15,420 h-70 l-30,-560 l-20,200 h-60 z"/>
+  </g>`;
+
+// Right wall: window on the viewer's left, back wall on the right. x = plan y.
+function elevRight() {
+  const L = 4800, bx1 = 1000, bx2 = 3060, dx1 = 3300, dx2 = 4200, wx = 4200;
+  const bed = `
+  <rect class="bedf" x="${bx1}" y="${zz(570)}" width="${bx2 - bx1}" height="570" rx="30"/>
+  <rect class="bedf" x="${bx2 - 120}" y="${zz(780)}" width="120" height="780" rx="30"/>
+  <line class="thin" x1="${bx1}" y1="${zz(330)}" x2="${bx2 - 120}" y2="${zz(330)}"/>
+  <line class="door" x1="${(bx1 + bx2) / 2}" y1="${zz(330)}" x2="${(bx1 + bx2) / 2}" y2="${zz(60)}"/>
+  <rect class="furn" x="${bx1 + 60}" y="${zz(570) - 80}" width="${bx2 - bx1 - 240}" height="80" rx="20" fill="#fff"/>
+  <text class="flbl" x="${(bx1 + bx2) / 2}" y="${zz(450) + 40}" text-anchor="middle">postel SLÄKT 96 × 206</text>
+  <text class="fsub" x="${(bx1 + bx2) / 2}" y="${zz(160)}" text-anchor="middle">dole přistýlka + úložné zásuvky</text>
+  <text class="fsub" x="${bx2 - 60}" y="${zz(780) - 50}" text-anchor="end">čelo 78 cm</text>`;
+  const door = `
+  <rect class="furn" x="${dx1}" y="${zz(2050)}" width="${dx2 - dx1}" height="2050" fill="#fff"/>
+  <rect class="thin" x="${dx1 + 60}" y="${zz(1990)}" width="${dx2 - dx1 - 120}" height="1990"/>
+  <circle class="thin" cx="${dx2 - 180}" cy="${zz(1050)}" r="30"/>
+  <text class="flbl" x="${(dx1 + dx2) / 2}" y="${zz(1400)}" text-anchor="middle">vstup</text>
+  <text class="fsub" x="${(dx1 + dx2) / 2}" y="${zz(1250)}" text-anchor="middle">dveře 90 cm</text>`;
+  const ward = `
+  <rect class="furn" x="${wx}" y="0" width="${L - wx}" height="${CH}"/>
+  <text class="flbl" x="${wx + 300}" y="${CH / 2}" text-anchor="middle" transform="rotate(-90 ${wx + 300} ${CH / 2})">skříňová stěna (bok)</text>`;
+  const dims = `
+  ${dimH(0, bx1, -400, '1 000', 0, 0)}
+  ${dimH(bx1, bx2, -400, '2 060', 0, 0)}
+  ${dimH(bx2, dx1, -400, '240', 0, 0)}
+  ${dimH(dx1, dx2, -400, '900', 0, 0)}
+  ${dimH(dx2, L, -400, '600', 0, 0)}
+  ${dimV(L + 520, zz(2050), zz(0), '2 050', L + T, L + T, 1)}`;
+  return elevFrame(L, 'okenní stěna', 'zadní stěna', ward + bed + door + kidFig(500) + `<text class="fsub" x="500" y="${zz(0) - 40}" text-anchor="middle">dítě 115 cm</text>` + dims,
+    'Pohled na pravou stěnu, varianta C');
+}
+
+// Back wall: door wall on the viewer's left, desk wall on the right. x = 2500 - plan x.
+function elevBack() {
+  const L = 2500, n = 4, dw = L / n;
+  let doors = '';
+  for (let i = 1; i < n; i++) doors += `<line class="door" x1="${dw * i}" y1="0" x2="${dw * i}" y2="${CH}"/>`;
+  const ward = `
+  <rect class="furn" x="0" y="0" width="${L}" height="${CH}"/>
+  ${doors}
+  <line class="door" x1="0" y1="${zz(800)}" x2="${L}" y2="${zz(800)}"/>
+  <text class="flbl" x="${L / 2}" y="${zz(1700)}" text-anchor="middle">skříňová stěna 250 × 60, ke stropu</text>
+  <text class="fsub" x="${L / 2}" y="${zz(1560)}" text-anchor="middle">4 hladké dveře bez úchytek, uvnitř tyč + police</text>
+  <text class="fsub" x="1780" y="${zz(420)}" text-anchor="middle">pod linkou výsuvné zásuvky na Lego</text>`;
+  // foreground: bed head end on the left (x = 2500 - 2500..1540 -> 0..960), desk unit side on the right
+  const fore = `
+  <rect class="fore" x="0" y="${zz(780)}" width="960" height="780" rx="30"/>
+  <text class="fsub" x="480" y="${zz(300)}" text-anchor="middle">postel (čelo, v popředí)</text>
+  <rect class="fore" x="${L - 500}" y="${zz(770)}" width="500" height="50"/>
+  <rect class="fore" x="${L - 20}" y="${zz(1350)}" width="20" height="450"/>
+  <rect class="fore" x="${L - 120}" y="${zz(1375)}" width="120" height="25"/>
+  <rect class="fore" x="${L - 350}" y="${zz(CH)}" width="350" height="${CH - 1650}"/>
+  <text class="fsub" x="${L - 60}" y="${zz(900)}" text-anchor="end">stůl (bok)</text>`;
+  const dims = `${dimH(0, L, -400, '2 500 = 4 × 625', 0, 0)}`;
+  return elevFrame(L, 'stěna se dveřmi', 'stěna se stolem', ward + fore + dims, 'Pohled na zadní stěnu, varianta C');
+}
+
+// Window wall: desk wall on the viewer's left, door wall on the right. x = plan x.
+function elevWindow() {
+  const L = 2500, w1 = 500, leaf = 900, fixed = 800, w2 = 300, WH = 2200;
+  const win = `
+  <rect class="glass" x="${w1}" y="${zz(WH)}" width="${leaf + fixed}" height="${WH}"/>
+  <rect class="thin" x="${w1 + 50}" y="${zz(WH) + 50}" width="${leaf - 100}" height="${WH - 100}"/>
+  <rect class="thin" x="${w1 + leaf + 50}" y="${zz(WH) + 50}" width="${fixed - 100}" height="${WH - 100}"/>
+  <rect class="thin" x="${w1 + leaf - 130}" y="${zz(1050) - 20}" width="80" height="220" rx="20" fill="#fff"/>
+  <text class="flbl" x="${w1 + leaf / 2}" y="${zz(1600)}" text-anchor="middle">otvíravé křídlo</text>
+  <text class="fsub" x="${w1 + leaf / 2}" y="${zz(1470)}" text-anchor="middle">pant vlevo, otvírá se do pokoje</text>
+  <text class="flbl" x="${w1 + leaf + fixed / 2}" y="${zz(1600)}" text-anchor="middle">pevná část</text>
+  <text class="fsub" x="${w1 + (leaf + fixed) / 2}" y="${zz(2300)}" text-anchor="middle">francouzské okno do zahrady, výška odhadem</text>`;
+  const fore = `
+  <rect class="fore" x="0" y="${zz(770)}" width="500" height="50"/>
+  <rect class="fore" x="0" y="${zz(1350)}" width="20" height="450"/>
+  <rect class="fore" x="0" y="${zz(1375)}" width="120" height="25"/>
+  <rect class="fore" x="0" y="${zz(CH)}" width="350" height="${CH - 1650}"/>
+  <text class="fsub" x="60" y="${zz(900)}" text-anchor="start">stůl (bok)</text>
+  <rect class="fore" x="${L - 960}" y="${zz(570)}" width="960" height="570" rx="30"/>
+  <text class="fsub" x="${L - 480}" y="${zz(250)}" text-anchor="middle">postel (nohy, v popředí)</text>`;
+  const dims = `
+  ${dimH(0, w1, -400, '500', 0, 0)}
+  ${dimH(w1, w1 + leaf, -400, '900', 0, 0)}
+  ${dimH(w1 + leaf, w1 + leaf + fixed, -400, '800', 0, 0)}
+  ${dimH(w1 + leaf + fixed, L, -400, '300', 0, 0)}
+  ${dimV(L + 520, zz(WH), zz(0), '≈ 2 200', L + T, L + T, 1)}`;
+  return elevFrame(L, 'stěna se stolem', 'stěna se dveřmi', win + fore + dims, 'Pohled na okenní stěnu, varianta C');
+}
+
 // ---------- render pages ----------
 function inlineImages(s) {
   return s.replace(/\{\{IMG:([a-z0-9-]+)\}\}/g, (_, name) => {
@@ -340,7 +472,7 @@ function render(src, vars) {
   return s;
 }
 
-const navrh = render('navrh.html', { PLAN_V1: plan(v1), PLAN_V2: plan(v2), PLAN_V3: plan(v3), ELEV_V3: elevation() });
+const navrh = render('navrh.html', { PLAN_V1: plan(v1), PLAN_V2: plan(v2), PLAN_V3: plan(v3), ELEV_V3: elevation(), ELEV_RIGHT: elevRight(), ELEV_BACK: elevBack(), ELEV_WINDOW: elevWindow() });
 mkdirSync(resolve(here, 'navrh'), { recursive: true });
 writeFileSync(resolve(here, 'navrh/index.html'), navrh);
 writeFileSync(resolve(here, '../build/preview-navrh.html'), navrh);
