@@ -1,0 +1,370 @@
+<!doctype html>
+<html lang="cs">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Návrh rozvržení – dětský pokoj</title>
+<style>
+  :root { --bg: #fbfaf7; --ink: #1f1e1b; --muted: #6b675f; --line: #e4e0d8; --accent: #5b6b78; }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--ink); font: 17px/1.6 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; }
+  main { max-width: 780px; margin: 0 auto; padding: 56px 20px 80px; }
+  header { margin-bottom: 48px; }
+  .kicker { font-size: 13px; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); margin: 0 0 12px; }
+  h1 { font-size: 34px; line-height: 1.15; margin: 0 0 14px; font-weight: 600; letter-spacing: -.01em; }
+  .lead { font-size: 18px; color: var(--muted); margin: 0; }
+  section { margin: 0 0 64px; }
+  h2 { font-size: 26px; margin: 0 0 6px; font-weight: 600; letter-spacing: -.01em; }
+  h2 .num { color: var(--muted); font-weight: 400; margin-right: 10px; }
+  .sub { color: var(--muted); margin: 0 0 22px; }
+  h3 { font-size: 17px; margin: 24px 0 6px; font-weight: 600; }
+  p { margin: 0 0 14px; }
+  ul { padding-left: 20px; margin: 0 0 14px; }
+  li { margin: 5px 0; }
+  .plan { display: grid; grid-template-columns: minmax(0, 1fr) 280px; gap: 28px; align-items: start; }
+  .plan svg { width: 100%; height: auto; display: block; }
+  .meta { font-size: 15px; }
+  .meta table { border-collapse: collapse; width: 100%; }
+  .meta td { padding: 7px 0; border-top: 1px solid var(--line); vertical-align: top; }
+  .meta td:first-child { font-weight: 600; white-space: nowrap; padding-right: 12px; }
+  .meta .note { color: var(--muted); font-size: 14px; margin-top: 14px; }
+  .box { margin: 24px 0 0; padding: 18px 22px; background: #f1efe9; border-radius: 6px; font-size: 16px; }
+  .box p:last-child, .box ul:last-child { margin-bottom: 0; }
+  footer { border-top: 1px solid var(--line); padding-top: 20px; font-size: 14px; color: var(--muted); }
+  footer a { color: var(--accent); }
+  @media (max-width: 640px) {
+    main { padding: 36px 16px 60px; }
+    h1 { font-size: 28px; }
+    .plan { grid-template-columns: 1fr; }
+  }
+  @media print { body { background: #fff; } main { max-width: none; padding: 0; } section { break-inside: avoid; } }
+</style>
+</head>
+<body>
+<main>
+  <header>
+    <p class="kicker">Pracovní skica · říjen 2026</p>
+    <h1>Návrh rozvržení</h1>
+    <p class="lead">Orientační ověření, že se požadavky ze zadání do pokoje vejdou. Není to hotový návrh ani zadání, jen podklad k diskusi. Vše v měřítku podle skutečného půdorysu, míry v cm.</p>
+  </header>
+
+  <section id="v1">
+    <h2><span class="num">A</span>Stůl vzadu u skříní</h2>
+    <p class="sub">Postele u okna proti sobě, skříňová stěna přes celou zadní stěnu, pracovní stůl mezi postelí a skříněmi.</p>
+    <div class="plan">
+      <div>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1150 -1250 4670 6350" role="img" aria-label="Půdorys pokoje 2500 × 4800 mm">
+  <style>
+    .wall { fill: #2a2925; }
+    .floor { fill: #ffffff; }
+    .thin { stroke: #2a2925; stroke-width: 12; fill: none; }
+    .swing { stroke: #2a2925; stroke-width: 12; fill: none; stroke-dasharray: 60 50; }
+    .dim line { stroke: #8a857b; stroke-width: 12; }
+    .dim text, .lbl { font: 130px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif; fill: #3a3833; }
+    .lbl.muted { fill: #8a857b; }
+    .rad { fill: #ffffff; stroke: #2a2925; stroke-width: 12; }
+    .furn { fill: #ece9e1; stroke: #2a2925; stroke-width: 12; }
+    .bed { fill: #e2e7ea; stroke: #2a2925; stroke-width: 12; }
+    .pillow { fill: #ffffff; stroke: #2a2925; stroke-width: 8.399999999999999; }
+    .door { stroke: #2a2925; stroke-width: 8.399999999999999; stroke-dasharray: 40 40; }
+    .chair { fill: #ffffff; stroke: #2a2925; stroke-width: 8.399999999999999; }
+    .flbl { font: 600 115px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif; fill: #2a2925; paint-order: stroke; stroke: #f1efe9; stroke-width: 60px; stroke-linejoin: round; }
+    .fsub { font: 95px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif; fill: #6b675f; paint-order: stroke; stroke: #f1efe9; stroke-width: 60px; stroke-linejoin: round; }
+    .zone { font: 500 110px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif; fill: #9a948a; letter-spacing: 10px; }
+  </style>
+
+  <!-- walls -->
+  <rect class="wall" x="-150" y="-150" width="2800" height="5100"/>
+  <rect class="floor" x="0" y="0" width="2500" height="4800"/>
+
+  <!-- window opening: cut wall, glass line, mullion -->
+  <rect class="floor" x="500" y="-150" width="1700" height="150"/>
+  <line class="thin" x1="500" y1="-75" x2="2200" y2="-75"/>
+  <line class="thin" x1="500" y1="-150" x2="500" y2="0"/>
+  <line class="thin" x1="2200" y1="-150" x2="2200" y2="0"/>
+  <line class="thin" x1="1400" y1="-150" x2="1400" y2="0"/>
+  <!-- opening leaf, hinged left, swings into the room -->
+  <line class="thin" x1="500" y1="0" x2="500" y2="900"/>
+  <path class="swing" d="M1400,0 A900,900 0 0 1 500,900"/>
+  <text class="lbl muted" x="1250" y="-270" text-anchor="middle">zahrada · francouzské okno</text>
+  
+
+  <!-- door on right wall, hinged at window-side jamb, swings into the room towards the back wall -->
+  <rect class="floor" x="2500" y="3300" width="150" height="900"/>
+  <line class="thin" x1="2500" y1="3300" x2="1600" y2="3300"/>
+  <path class="swing" d="M2500,4200 A900,900 0 0 1 1600,3300"/>
+  <text class="lbl" x="2080" y="3630" text-anchor="middle">vstup</text>
+
+  <!-- radiator on left wall -->
+  <rect class="rad" x="0" y="400" width="100" height="600"/>
+  <text class="lbl" x="190" y="743.3333333333334">topení</text>
+
+  <rect class="furn" x="0" y="4200" width="2500" height="600"/><line class="door" x1="625" y1="4200" x2="625" y2="4800"/><line class="door" x1="1250" y1="4200" x2="1250" y2="4800"/><line class="door" x1="1875" y1="4200" x2="1875" y2="4800"/><text class="flbl" x="1250" y="4480" text-anchor="middle">skříňová stěna</text><text class="fsub" x="1250" y="4620" text-anchor="middle">250 × 60, ke stropu</text><rect class="bed" x="0" y="1000" width="900" height="2000" rx="40"/><rect class="pillow" x="120" y="1080" width="660" height="300" rx="60"/><text class="flbl" x="450" y="1980" text-anchor="middle">postel A</text><text class="fsub" x="450" y="2120" text-anchor="middle">90 × 200</text><rect class="bed" x="1600" y="600" width="900" height="2000" rx="40"/><rect class="pillow" x="1720" y="680" width="660" height="300" rx="60"/><text class="flbl" x="2050" y="1580" text-anchor="middle">postel B</text><text class="fsub" x="2050" y="1720" text-anchor="middle">90 × 200</text><rect class="furn" x="0" y="3000" width="600" height="1200"/><circle class="chair" cx="860" cy="3300" r="190"/><circle class="chair" cx="860" cy="3900" r="190"/><text class="flbl" x="300" y="3580" text-anchor="middle">stůl</text><text class="fsub" x="300" y="3720" text-anchor="middle">120 × 60</text><text class="zone" x="1550" y="3250" text-anchor="middle">volná plocha</text><text class="zone" x="1250" y="1950" text-anchor="middle">ulička</text>
+
+  <!-- dimensions: window wall -->
+  <g class="dim">
+    <line x1="0" y1="-150" x2="0" y2="-600"/>
+    <line x1="500" y1="-150" x2="500" y2="-600"/>
+    <line x1="0" y1="-520" x2="500" y2="-520"/>
+    <line x1="-55" y1="-465" x2="55" y2="-575" transform="rotate(0 0 -520)"/><line x1="445" y1="-465" x2="555" y2="-575" transform="rotate(0 500 -520)"/>
+    <text x="250" y="-560" text-anchor="middle">500</text>
+  </g>
+  <g class="dim">
+    <line x1="500" y1="-150" x2="500" y2="-600"/>
+    <line x1="2200" y1="-150" x2="2200" y2="-600"/>
+    <line x1="500" y1="-520" x2="2200" y2="-520"/>
+    <line x1="445" y1="-465" x2="555" y2="-575" transform="rotate(0 500 -520)"/><line x1="2145" y1="-465" x2="2255" y2="-575" transform="rotate(0 2200 -520)"/>
+    <text x="1350" y="-560" text-anchor="middle">1 700</text>
+  </g>
+  <g class="dim">
+    <line x1="2200" y1="-150" x2="2200" y2="-600"/>
+    <line x1="2500" y1="-150" x2="2500" y2="-600"/>
+    <line x1="2200" y1="-520" x2="2500" y2="-520"/>
+    <line x1="2145" y1="-465" x2="2255" y2="-575" transform="rotate(0 2200 -520)"/><line x1="2445" y1="-465" x2="2555" y2="-575" transform="rotate(0 2500 -520)"/>
+    <text x="2350" y="-560" text-anchor="middle">300</text>
+  </g>
+  <g class="dim">
+    <line x1="0" y1="-150" x2="0" y2="-980"/>
+    <line x1="2500" y1="-150" x2="2500" y2="-980"/>
+    <line x1="0" y1="-900" x2="2500" y2="-900"/>
+    <line x1="-55" y1="-845" x2="55" y2="-955" transform="rotate(0 0 -900)"/><line x1="2445" y1="-845" x2="2555" y2="-955" transform="rotate(0 2500 -900)"/>
+    <text x="1250" y="-940" text-anchor="middle">2 500</text>
+  </g>
+  <!-- left wall: radiator, overall -->
+  <g class="dim">
+    <line x1="-150" y1="0" x2="-440" y2="0"/>
+    <line x1="0" y1="400" x2="-440" y2="400"/>
+    <line x1="-520" y1="0" x2="-520" y2="400"/>
+    <line x1="-575" y1="55" x2="-465" y2="-55" transform="rotate(0 -520 0)"/><line x1="-575" y1="455" x2="-465" y2="345" transform="rotate(0 -520 400)"/>
+    <text x="-565" y="200" text-anchor="middle" transform="rotate(-90 -565 200)">400</text>
+  </g>
+  <g class="dim">
+    <line x1="0" y1="400" x2="-440" y2="400"/>
+    <line x1="0" y1="1000" x2="-440" y2="1000"/>
+    <line x1="-520" y1="400" x2="-520" y2="1000"/>
+    <line x1="-575" y1="455" x2="-465" y2="345" transform="rotate(0 -520 400)"/><line x1="-575" y1="1055" x2="-465" y2="945" transform="rotate(0 -520 1000)"/>
+    <text x="-565" y="700" text-anchor="middle" transform="rotate(-90 -565 700)">600</text>
+  </g>
+  <g class="dim">
+    <line x1="-150" y1="0" x2="-820" y2="0"/>
+    <line x1="-150" y1="4800" x2="-820" y2="4800"/>
+    <line x1="-900" y1="0" x2="-900" y2="4800"/>
+    <line x1="-955" y1="55" x2="-845" y2="-55" transform="rotate(0 -900 0)"/><line x1="-955" y1="4855" x2="-845" y2="4745" transform="rotate(0 -900 4800)"/>
+    <text x="-945" y="2400" text-anchor="middle" transform="rotate(-90 -945 2400)">4 800</text>
+  </g>
+  <!-- right wall: door -->
+  <g class="dim">
+    <line x1="2650" y1="0" x2="2940" y2="0"/>
+    <line x1="2650" y1="3300" x2="2940" y2="3300"/>
+    <line x1="3020" y1="0" x2="3020" y2="3300"/>
+    <line x1="2965" y1="55" x2="3075" y2="-55" transform="rotate(0 3020 0)"/><line x1="2965" y1="3355" x2="3075" y2="3245" transform="rotate(0 3020 3300)"/>
+    <text x="3065" y="1650" text-anchor="middle" transform="rotate(90 3065 1650)">3 300</text>
+  </g>
+  <g class="dim">
+    <line x1="2650" y1="3300" x2="2940" y2="3300"/>
+    <line x1="2650" y1="4200" x2="2940" y2="4200"/>
+    <line x1="3020" y1="3300" x2="3020" y2="4200"/>
+    <line x1="2965" y1="3355" x2="3075" y2="3245" transform="rotate(0 3020 3300)"/><line x1="2965" y1="4255" x2="3075" y2="4145" transform="rotate(0 3020 4200)"/>
+    <text x="3065" y="3750" text-anchor="middle" transform="rotate(90 3065 3750)">900</text>
+  </g>
+  <g class="dim">
+    <line x1="2650" y1="4200" x2="2940" y2="4200"/>
+    <line x1="2650" y1="4800" x2="2940" y2="4800"/>
+    <line x1="3020" y1="4200" x2="3020" y2="4800"/>
+    <line x1="2965" y1="4255" x2="3075" y2="4145" transform="rotate(0 3020 4200)"/><line x1="2965" y1="4855" x2="3075" y2="4745" transform="rotate(0 3020 4800)"/>
+    <text x="3065" y="4500" text-anchor="middle" transform="rotate(90 3065 4500)">600</text>
+  </g>
+
+  <!-- scale + note -->
+  <g class="dim">
+    <line x1="0" y1="5320" x2="1000" y2="5320"/>
+    <line x1="-55" y1="5375" x2="55" y2="5265" transform="rotate(0 0 5320)"/><line x1="945" y1="5375" x2="1055" y2="5265" transform="rotate(0 1000 5320)"/>
+    <text x="500" y="5280" text-anchor="middle">1 m</text>
+  </g>
+  <text class="lbl muted" x="2500" y="5280" text-anchor="end">výška stropu 2 600 mm</text>
+</svg></div>
+      <div class="meta">
+        <table>
+          <tr><td>Skříňová stěna</td><td>250 × 60 cm, až ke stropu (260). Čtyři dveře, hladká dvířka. Uvnitř šatní část, police, v dolní části výsuvné mělké zásuvky na Lego ve výšce dětí.</td></tr>
+          <tr><td>Postel A</td><td>90 × 200, u levé stěny, hlava hned za radiátorem. Úložné zásuvky pod matrací.</td></tr>
+          <tr><td>Postel B</td><td>90 × 200, u pravé stěny, 60 cm od okenní stěny – stojí vedle pevné části okna, otvíravé křídlo zůstává volné.</td></tr>
+          <tr><td>Stůl</td><td>120 × 60, dvě místa vedle sebe. Vejde se přesně mezi postel A a skříně.</td></tr>
+          <tr><td>Ulička</td><td>70 cm mezi postelemi.</td></tr>
+          <tr><td>Volná plocha</td><td>≈ 5,5 m² (bez dosahu dveří), souvislý prostor na hraní vzadu před skříněmi a vpravo.</td></tr>
+        </table>
+        <p class="note">Dveře do pokoje se otevírají před skříňovou stěnu, nekolidují – skříně začínají až za zárubní.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="v2">
+    <h2><span class="num">B</span>Stůl u okna</h2>
+    <p class="sub">Stejný princip, jen stůl a postel A prohozené: stůl má denní světlo, postel A je dál od okna a radiátoru.</p>
+    <div class="plan">
+      <div>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1150 -1250 4670 6350" role="img" aria-label="Půdorys pokoje 2500 × 4800 mm">
+  <style>
+    .wall { fill: #2a2925; }
+    .floor { fill: #ffffff; }
+    .thin { stroke: #2a2925; stroke-width: 12; fill: none; }
+    .swing { stroke: #2a2925; stroke-width: 12; fill: none; stroke-dasharray: 60 50; }
+    .dim line { stroke: #8a857b; stroke-width: 12; }
+    .dim text, .lbl { font: 130px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif; fill: #3a3833; }
+    .lbl.muted { fill: #8a857b; }
+    .rad { fill: #ffffff; stroke: #2a2925; stroke-width: 12; }
+    .furn { fill: #ece9e1; stroke: #2a2925; stroke-width: 12; }
+    .bed { fill: #e2e7ea; stroke: #2a2925; stroke-width: 12; }
+    .pillow { fill: #ffffff; stroke: #2a2925; stroke-width: 8.399999999999999; }
+    .door { stroke: #2a2925; stroke-width: 8.399999999999999; stroke-dasharray: 40 40; }
+    .chair { fill: #ffffff; stroke: #2a2925; stroke-width: 8.399999999999999; }
+    .flbl { font: 600 115px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif; fill: #2a2925; paint-order: stroke; stroke: #f1efe9; stroke-width: 60px; stroke-linejoin: round; }
+    .fsub { font: 95px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif; fill: #6b675f; paint-order: stroke; stroke: #f1efe9; stroke-width: 60px; stroke-linejoin: round; }
+    .zone { font: 500 110px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif; fill: #9a948a; letter-spacing: 10px; }
+  </style>
+
+  <!-- walls -->
+  <rect class="wall" x="-150" y="-150" width="2800" height="5100"/>
+  <rect class="floor" x="0" y="0" width="2500" height="4800"/>
+
+  <!-- window opening: cut wall, glass line, mullion -->
+  <rect class="floor" x="500" y="-150" width="1700" height="150"/>
+  <line class="thin" x1="500" y1="-75" x2="2200" y2="-75"/>
+  <line class="thin" x1="500" y1="-150" x2="500" y2="0"/>
+  <line class="thin" x1="2200" y1="-150" x2="2200" y2="0"/>
+  <line class="thin" x1="1400" y1="-150" x2="1400" y2="0"/>
+  <!-- opening leaf, hinged left, swings into the room -->
+  <line class="thin" x1="500" y1="0" x2="500" y2="900"/>
+  <path class="swing" d="M1400,0 A900,900 0 0 1 500,900"/>
+  <text class="lbl muted" x="1250" y="-270" text-anchor="middle">zahrada · francouzské okno</text>
+  
+
+  <!-- door on right wall, hinged at window-side jamb, swings into the room towards the back wall -->
+  <rect class="floor" x="2500" y="3300" width="150" height="900"/>
+  <line class="thin" x1="2500" y1="3300" x2="1600" y2="3300"/>
+  <path class="swing" d="M2500,4200 A900,900 0 0 1 1600,3300"/>
+  <text class="lbl" x="2080" y="3630" text-anchor="middle">vstup</text>
+
+  <!-- radiator on left wall -->
+  <rect class="rad" x="0" y="400" width="100" height="600"/>
+  <text class="lbl" x="190" y="743.3333333333334">topení</text>
+
+  <rect class="furn" x="0" y="4200" width="2500" height="600"/><line class="door" x1="625" y1="4200" x2="625" y2="4800"/><line class="door" x1="1250" y1="4200" x2="1250" y2="4800"/><line class="door" x1="1875" y1="4200" x2="1875" y2="4800"/><text class="flbl" x="1250" y="4480" text-anchor="middle">skříňová stěna</text><text class="fsub" x="1250" y="4620" text-anchor="middle">250 × 60, ke stropu</text><rect class="furn" x="0" y="1000" width="600" height="1200"/><circle class="chair" cx="860" cy="1300" r="190"/><circle class="chair" cx="860" cy="1900" r="190"/><text class="flbl" x="300" y="1580" text-anchor="middle">stůl</text><text class="fsub" x="300" y="1720" text-anchor="middle">120 × 60</text><rect class="bed" x="0" y="2200" width="900" height="2000" rx="40"/><rect class="pillow" x="120" y="3820" width="660" height="300" rx="60"/><text class="flbl" x="450" y="3180" text-anchor="middle">postel A</text><text class="fsub" x="450" y="3320" text-anchor="middle">90 × 200</text><rect class="bed" x="1600" y="600" width="900" height="2000" rx="40"/><rect class="pillow" x="1720" y="680" width="660" height="300" rx="60"/><text class="flbl" x="2050" y="1580" text-anchor="middle">postel B</text><text class="fsub" x="2050" y="1720" text-anchor="middle">90 × 200</text><text class="zone" x="1550" y="3250" text-anchor="middle">volná plocha</text>
+
+  <!-- dimensions: window wall -->
+  <g class="dim">
+    <line x1="0" y1="-150" x2="0" y2="-600"/>
+    <line x1="500" y1="-150" x2="500" y2="-600"/>
+    <line x1="0" y1="-520" x2="500" y2="-520"/>
+    <line x1="-55" y1="-465" x2="55" y2="-575" transform="rotate(0 0 -520)"/><line x1="445" y1="-465" x2="555" y2="-575" transform="rotate(0 500 -520)"/>
+    <text x="250" y="-560" text-anchor="middle">500</text>
+  </g>
+  <g class="dim">
+    <line x1="500" y1="-150" x2="500" y2="-600"/>
+    <line x1="2200" y1="-150" x2="2200" y2="-600"/>
+    <line x1="500" y1="-520" x2="2200" y2="-520"/>
+    <line x1="445" y1="-465" x2="555" y2="-575" transform="rotate(0 500 -520)"/><line x1="2145" y1="-465" x2="2255" y2="-575" transform="rotate(0 2200 -520)"/>
+    <text x="1350" y="-560" text-anchor="middle">1 700</text>
+  </g>
+  <g class="dim">
+    <line x1="2200" y1="-150" x2="2200" y2="-600"/>
+    <line x1="2500" y1="-150" x2="2500" y2="-600"/>
+    <line x1="2200" y1="-520" x2="2500" y2="-520"/>
+    <line x1="2145" y1="-465" x2="2255" y2="-575" transform="rotate(0 2200 -520)"/><line x1="2445" y1="-465" x2="2555" y2="-575" transform="rotate(0 2500 -520)"/>
+    <text x="2350" y="-560" text-anchor="middle">300</text>
+  </g>
+  <g class="dim">
+    <line x1="0" y1="-150" x2="0" y2="-980"/>
+    <line x1="2500" y1="-150" x2="2500" y2="-980"/>
+    <line x1="0" y1="-900" x2="2500" y2="-900"/>
+    <line x1="-55" y1="-845" x2="55" y2="-955" transform="rotate(0 0 -900)"/><line x1="2445" y1="-845" x2="2555" y2="-955" transform="rotate(0 2500 -900)"/>
+    <text x="1250" y="-940" text-anchor="middle">2 500</text>
+  </g>
+  <!-- left wall: radiator, overall -->
+  <g class="dim">
+    <line x1="-150" y1="0" x2="-440" y2="0"/>
+    <line x1="0" y1="400" x2="-440" y2="400"/>
+    <line x1="-520" y1="0" x2="-520" y2="400"/>
+    <line x1="-575" y1="55" x2="-465" y2="-55" transform="rotate(0 -520 0)"/><line x1="-575" y1="455" x2="-465" y2="345" transform="rotate(0 -520 400)"/>
+    <text x="-565" y="200" text-anchor="middle" transform="rotate(-90 -565 200)">400</text>
+  </g>
+  <g class="dim">
+    <line x1="0" y1="400" x2="-440" y2="400"/>
+    <line x1="0" y1="1000" x2="-440" y2="1000"/>
+    <line x1="-520" y1="400" x2="-520" y2="1000"/>
+    <line x1="-575" y1="455" x2="-465" y2="345" transform="rotate(0 -520 400)"/><line x1="-575" y1="1055" x2="-465" y2="945" transform="rotate(0 -520 1000)"/>
+    <text x="-565" y="700" text-anchor="middle" transform="rotate(-90 -565 700)">600</text>
+  </g>
+  <g class="dim">
+    <line x1="-150" y1="0" x2="-820" y2="0"/>
+    <line x1="-150" y1="4800" x2="-820" y2="4800"/>
+    <line x1="-900" y1="0" x2="-900" y2="4800"/>
+    <line x1="-955" y1="55" x2="-845" y2="-55" transform="rotate(0 -900 0)"/><line x1="-955" y1="4855" x2="-845" y2="4745" transform="rotate(0 -900 4800)"/>
+    <text x="-945" y="2400" text-anchor="middle" transform="rotate(-90 -945 2400)">4 800</text>
+  </g>
+  <!-- right wall: door -->
+  <g class="dim">
+    <line x1="2650" y1="0" x2="2940" y2="0"/>
+    <line x1="2650" y1="3300" x2="2940" y2="3300"/>
+    <line x1="3020" y1="0" x2="3020" y2="3300"/>
+    <line x1="2965" y1="55" x2="3075" y2="-55" transform="rotate(0 3020 0)"/><line x1="2965" y1="3355" x2="3075" y2="3245" transform="rotate(0 3020 3300)"/>
+    <text x="3065" y="1650" text-anchor="middle" transform="rotate(90 3065 1650)">3 300</text>
+  </g>
+  <g class="dim">
+    <line x1="2650" y1="3300" x2="2940" y2="3300"/>
+    <line x1="2650" y1="4200" x2="2940" y2="4200"/>
+    <line x1="3020" y1="3300" x2="3020" y2="4200"/>
+    <line x1="2965" y1="3355" x2="3075" y2="3245" transform="rotate(0 3020 3300)"/><line x1="2965" y1="4255" x2="3075" y2="4145" transform="rotate(0 3020 4200)"/>
+    <text x="3065" y="3750" text-anchor="middle" transform="rotate(90 3065 3750)">900</text>
+  </g>
+  <g class="dim">
+    <line x1="2650" y1="4200" x2="2940" y2="4200"/>
+    <line x1="2650" y1="4800" x2="2940" y2="4800"/>
+    <line x1="3020" y1="4200" x2="3020" y2="4800"/>
+    <line x1="2965" y1="4255" x2="3075" y2="4145" transform="rotate(0 3020 4200)"/><line x1="2965" y1="4855" x2="3075" y2="4745" transform="rotate(0 3020 4800)"/>
+    <text x="3065" y="4500" text-anchor="middle" transform="rotate(90 3065 4500)">600</text>
+  </g>
+
+  <!-- scale + note -->
+  <g class="dim">
+    <line x1="0" y1="5320" x2="1000" y2="5320"/>
+    <line x1="-55" y1="5375" x2="55" y2="5265" transform="rotate(0 0 5320)"/><line x1="945" y1="5375" x2="1055" y2="5265" transform="rotate(0 1000 5320)"/>
+    <text x="500" y="5280" text-anchor="middle">1 m</text>
+  </g>
+  <text class="lbl muted" x="2500" y="5280" text-anchor="end">výška stropu 2 600 mm</text>
+</svg></div>
+      <div class="meta">
+        <table>
+          <tr><td>Skříňová stěna</td><td>Stejně jako ve variantě A.</td></tr>
+          <tr><td>Stůl</td><td>120 × 60 u levé stěny hned za radiátorem, u okna.</td></tr>
+          <tr><td>Postel A</td><td>90 × 200 u levé stěny, hlava u skříní.</td></tr>
+          <tr><td>Postel B</td><td>Stejně jako ve variantě A.</td></tr>
+          <tr><td>Volná plocha</td><td>≈ 5,5 m², větší souvislá plocha vpravo vzadu.</td></tr>
+        </table>
+        <p class="note">Nevýhoda: židle u stolu zasahují do uličky mezi stolem a postelí B (zbývá cca 50 cm, když jsou odsunuté).</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="pozn">
+    <h2>Co z toho plyne</h2>
+    <h3>Proč takto</h3>
+    <ul>
+      <li>Dvě klasické postele 90 × 200 se do pokoje 250 × 480 vejdou jen proti sobě u okna. Za sebou u jedné stěny chybí cca 10 cm (otvíravé křídlo okna potřebuje 90 cm volných u levé stěny).</li>
+      <li>Zadní stěna je jediné místo pro hlubokou skříň přes celou šířku: před dveřmi do pokoje zbývá přesně 60 cm, dveře se otevírají směrem od ní.</li>
+      <li>Skříňová stěna až ke stropu + zásuvky pod oběma postelemi dávají dohromady hodně uzavřeného úložného prostoru bez jediné otevřené police.</li>
+    </ul>
+    <h3>Co je těsné</h3>
+    <ul>
+      <li>Stůl pro dva má jen 120 cm (60 cm na dítě). Pro školáky lepší 140–160, ale to se bez úpravy nevejde.</li>
+      <li>Postel A ve variantě A má hlavu hned za radiátorem (radiátor zůstává volný, postel stojí až za ním).</li>
+    </ul>
+    <div class="box">
+      <p><strong>Co by pomohlo:</strong> otočit dveře do pokoje ven (nebo posuvné). Uvolní se 0,6 m² u pravé stěny, stůl by mohl být u pravé stěny až k zárubni a hrací plocha by byla souvislá přes celou šířku.</p>
+    </div>
+  </section>
+
+  <footer>Pracovní skica k zadání dětského pokoje · <a href="../">zpět na zadání</a></footer>
+</main>
+</body>
+</html>

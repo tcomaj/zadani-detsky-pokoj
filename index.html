@@ -171,6 +171,14 @@
     .dim text, .lbl { font: 130px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif; fill: #3a3833; }
     .lbl.muted { fill: #8a857b; }
     .rad { fill: #ffffff; stroke: #2a2925; stroke-width: 12; }
+    .furn { fill: #ece9e1; stroke: #2a2925; stroke-width: 12; }
+    .bed { fill: #e2e7ea; stroke: #2a2925; stroke-width: 12; }
+    .pillow { fill: #ffffff; stroke: #2a2925; stroke-width: 8.399999999999999; }
+    .door { stroke: #2a2925; stroke-width: 8.399999999999999; stroke-dasharray: 40 40; }
+    .chair { fill: #ffffff; stroke: #2a2925; stroke-width: 8.399999999999999; }
+    .flbl { font: 600 115px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif; fill: #2a2925; paint-order: stroke; stroke: #f1efe9; stroke-width: 60px; stroke-linejoin: round; }
+    .fsub { font: 95px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif; fill: #6b675f; paint-order: stroke; stroke: #f1efe9; stroke-width: 60px; stroke-linejoin: round; }
+    .zone { font: 500 110px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif; fill: #9a948a; letter-spacing: 10px; }
   </style>
 
   <!-- walls -->
@@ -193,11 +201,13 @@
   <rect class="floor" x="2500" y="3300" width="150" height="900"/>
   <line class="thin" x1="2500" y1="3300" x2="1600" y2="3300"/>
   <path class="swing" d="M2500,4200 A900,900 0 0 1 1600,3300"/>
-  <text class="lbl" x="2050" y="4450" text-anchor="middle">vstup</text>
+  <text class="lbl" x="2080" y="3630" text-anchor="middle">vstup</text>
 
   <!-- radiator on left wall -->
   <rect class="rad" x="0" y="400" width="100" height="600"/>
   <text class="lbl" x="190" y="743.3333333333334">topení</text>
+
+  
 
   <!-- dimensions: window wall -->
   <g class="dim">

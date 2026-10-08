@@ -5,7 +5,7 @@
 // Inputs (not committed): ./src/page.html, ./src/shell.html, ../build/img/*.jpg
 // Output: ./index.html
 
-import { readFileSync, writeFileSync, existsSync } from 'node:fs';
+import { readFileSync, writeFileSync, existsSync, mkdirSync } from 'node:fs';
 import { resolve, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { webcrypto, randomBytes } from 'node:crypto';
@@ -14,7 +14,6 @@ const here = dirname(fileURLToPath(import.meta.url));
 const password = process.env.PASSWORD || ''; // empty = publish unencrypted
 
 const imgDir = resolve(here, '../build/img');
-const tpl = readFileSync(resolve(here, 'src/page.html'), 'utf8');
 const shell = readFileSync(resolve(here, 'src/shell.html'), 'utf8');
 
 // ---------- floor plan (mm, y down, window at top) ----------
@@ -57,7 +56,7 @@ const hingeX = winR;                          // leaf hinged at right jamb
 const doorY2 = H - doorFromBack;              // hinge (back-side jamb)
 const doorY1 = doorY2 - doorW;
 
-const planSvg = `
+function plan(furniture = '') { return `
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="-1150 -1250 4670 6350" role="img" aria-label="Půdorys pokoje 2500 × 4800 mm">
   <style>
     .wall { fill: #2a2925; }
@@ -68,6 +67,14 @@ const planSvg = `
     .dim text, .lbl { font: ${FS}px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif; fill: #3a3833; }
     .lbl.muted { fill: #8a857b; }
     .rad { fill: #ffffff; stroke: #2a2925; stroke-width: ${SW}; }
+    .furn { fill: #ece9e1; stroke: #2a2925; stroke-width: ${SW}; }
+    .bed { fill: #e2e7ea; stroke: #2a2925; stroke-width: ${SW}; }
+    .pillow { fill: #ffffff; stroke: #2a2925; stroke-width: ${SW * 0.7}; }
+    .door { stroke: #2a2925; stroke-width: ${SW * 0.7}; stroke-dasharray: 40 40; }
+    .chair { fill: #ffffff; stroke: #2a2925; stroke-width: ${SW * 0.7}; }
+    .flbl { font: 600 115px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif; fill: #2a2925; paint-order: stroke; stroke: #f1efe9; stroke-width: 60px; stroke-linejoin: round; }
+    .fsub { font: 95px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif; fill: #6b675f; paint-order: stroke; stroke: #f1efe9; stroke-width: 60px; stroke-linejoin: round; }
+    .zone { font: 500 110px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif; fill: #9a948a; letter-spacing: 10px; }
   </style>
 
   <!-- walls -->
@@ -83,18 +90,20 @@ const planSvg = `
   <!-- opening leaf, hinged left, swings into the room -->
   <line class="thin" x1="${winL}" y1="0" x2="${winL}" y2="${winLeaf}"/>
   <path class="swing" d="M${winL + winLeaf},0 A${winLeaf},${winLeaf} 0 0 1 ${winL},${winLeaf}"/>
-  <text class="lbl muted" x="${W / 2}" y="${-T - 120}" text-anchor="middle">zahrada</text>
-  <text class="lbl" x="${winL + winW / 2}" y="${winLeaf + 300}" text-anchor="middle">francouzské okno</text>
+  <text class="lbl muted" x="${W / 2}" y="${-T - 120}" text-anchor="middle">${furniture ? 'zahrada · francouzské okno' : 'zahrada'}</text>
+  ${furniture ? '' : `<text class="lbl" x="${winL + winW / 2}" y="${winLeaf + 300}" text-anchor="middle">francouzské okno</text>`}
 
   <!-- door on right wall, hinged at window-side jamb, swings into the room towards the back wall -->
   <rect class="floor" x="${W}" y="${doorY1}" width="${T}" height="${doorW}"/>
   <line class="thin" x1="${W}" y1="${doorY1}" x2="${W - doorW}" y2="${doorY1}"/>
   <path class="swing" d="M${W},${doorY2} A${doorW},${doorW} 0 0 1 ${W - doorW},${doorY1}"/>
-  <text class="lbl" x="${W - doorW / 2}" y="${doorY2 + 250}" text-anchor="middle">vstup</text>
+  <text class="lbl" x="${W - 420}" y="${doorY1 + 330}" text-anchor="middle">vstup</text>
 
   <!-- radiator on left wall -->
   <rect class="rad" x="0" y="${radFromTop}" width="${radDepth}" height="${radLen}"/>
   <text class="lbl" x="${radDepth + 90}" y="${radFromTop + radLen / 2 + FS / 3}">topení</text>
+
+  ${furniture}
 
   <!-- dimensions: window wall -->
   ${dimH(0, winL, -520, '500', -T, -T)}
@@ -117,16 +126,73 @@ const planSvg = `
     <text x="500" y="${H + 520 - 40}" text-anchor="middle">1 m</text>
   </g>
   <text class="lbl muted" x="${W}" y="${H + 480}" text-anchor="end">výška stropu 2 600 mm</text>
-</svg>`;
+</svg>`; }
 
-// ---------- inline images ----------
-let html = tpl.replace('{{PLAN_SVG}}', planSvg);
-html = html.replace(/\{\{IMG:([a-z0-9-]+)\}\}/g, (_, name) => {
-  const p = resolve(imgDir, `${name}.jpg`);
-  if (!existsSync(p)) throw new Error(`missing image ${p}`);
-  return `data:image/jpeg;base64,${readFileSync(p).toString('base64')}`;
-});
-if (/\{\{[A-Z_:a-z0-9-]+\}\}/.test(html)) throw new Error('unreplaced placeholder in page');
+// ---------- furniture helpers (mm) ----------
+function label(x, y, w, h, title, sub) {
+  const cx = x + w / 2, cy = y + h / 2;
+  return `<text class="flbl" x="${cx}" y="${cy - (sub ? 20 : -40)}" text-anchor="middle">${title}</text>` +
+    (sub ? `<text class="fsub" x="${cx}" y="${cy + 120}" text-anchor="middle">${sub}</text>` : '');
+}
+function wardrobe(x, y, w, h, title, sub, doors) {
+  let lines = '';
+  for (let i = 1; i < doors; i++) lines += `<line class="door" x1="${x + (w / doors) * i}" y1="${y}" x2="${x + (w / doors) * i}" y2="${y + h}"/>`;
+  return `<rect class="furn" x="${x}" y="${y}" width="${w}" height="${h}"/>${lines}${label(x, y, w, h, title, sub)}`;
+}
+function bed(x, y, w, h, title, sub, headAt = 'top') {
+  const py = headAt === 'top' ? y + 80 : y + h - 380;
+  return `<rect class="bed" x="${x}" y="${y}" width="${w}" height="${h}" rx="40"/>` +
+    `<rect class="pillow" x="${x + 120}" y="${py}" width="${w - 240}" height="300" rx="60"/>` +
+    label(x, y, w, h, title, sub);
+}
+function desk(x, y, w, h, title, sub, chairs) {
+  const c = chairs.map(([cx, cy]) => `<circle class="chair" cx="${cx}" cy="${cy}" r="190"/>`).join('');
+  return `<rect class="furn" x="${x}" y="${y}" width="${w}" height="${h}"/>${c}${label(x, y, w, h, title, sub)}`;
+}
+function zone(x, y, text) { return `<text class="zone" x="${x}" y="${y}" text-anchor="middle">${text}</text>`; }
+
+// Variant 1: desk at the back next to the wardrobe wall
+const v1 = [
+  wardrobe(0, 4200, 2500, 600, 'skříňová stěna', '250 × 60, ke stropu', 4),
+  bed(0, 1000, 900, 2000, 'postel A', '90 × 200', 'top'),
+  bed(1600, 600, 900, 2000, 'postel B', '90 × 200', 'top'),
+  desk(0, 3000, 600, 1200, 'stůl', '120 × 60', [[860, 3300], [860, 3900]]),
+  zone(1550, 3250, 'volná plocha'),
+  zone(1250, 1950, 'ulička'),
+].join('');
+
+// Variant 2: desk by the window (daylight), bed A towards the back
+const v2 = [
+  wardrobe(0, 4200, 2500, 600, 'skříňová stěna', '250 × 60, ke stropu', 4),
+  desk(0, 1000, 600, 1200, 'stůl', '120 × 60', [[860, 1300], [860, 1900]]),
+  bed(0, 2200, 900, 2000, 'postel A', '90 × 200', 'bottom'),
+  bed(1600, 600, 900, 2000, 'postel B', '90 × 200', 'top'),
+  zone(1550, 3250, 'volná plocha'),
+].join('');
+
+// ---------- render pages ----------
+function inlineImages(s) {
+  return s.replace(/\{\{IMG:([a-z0-9-]+)\}\}/g, (_, name) => {
+    const p = resolve(imgDir, `${name}.jpg`);
+    if (!existsSync(p)) throw new Error(`missing image ${p}`);
+    return `data:image/jpeg;base64,${readFileSync(p).toString('base64')}`;
+  });
+}
+function render(src, vars) {
+  let s = readFileSync(resolve(here, 'src', src), 'utf8');
+  for (const [k, v] of Object.entries(vars)) s = s.replace(`{{${k}}}`, v);
+  s = inlineImages(s);
+  if (/\{\{[A-Z_:a-z0-9-]+\}\}/.test(s)) throw new Error(`unreplaced placeholder in ${src}`);
+  return s;
+}
+
+const navrh = render('navrh.html', { PLAN_V1: plan(v1), PLAN_V2: plan(v2) });
+mkdirSync(resolve(here, 'navrh'), { recursive: true });
+writeFileSync(resolve(here, 'navrh/index.html'), navrh);
+writeFileSync(resolve(here, '../build/preview-navrh.html'), navrh);
+console.log(`navrh/index.html written: ${(navrh.length / 1e3).toFixed(0)} kB`);
+
+let html = render('page.html', { PLAN_SVG: plan() });
 writeFileSync(resolve(here, '../build/preview.html'), html); // unencrypted preview, stays outside the repo
 
 if (!password) {
