@@ -180,7 +180,7 @@ const v3 = [
   `<text class="fsub" x="${W - slaktOut + (slaktOut - slaktW) / 2}" y="${slaktY + slaktL / 2 - 60}" text-anchor="middle">přistýlka</text>` +
   `<text class="fsub" x="${W - slaktOut + (slaktOut - slaktW) / 2}" y="${slaktY + slaktL / 2 + 70}" text-anchor="middle">(vysunutá na noc)</text>`,
   bed(W - slaktW, slaktY, slaktW, slaktL, 'SLÄKT', '96 × 206', 'bottom'),
-  desk(0, 0, 550, 3100, 'stůl', '310 × 55, zavěšený', [[800, 1500], [800, 2600]]),
+  desk(0, 0, 500, 3100, 'stůl', '310 × 50, zavěšený', [[760, 1500], [760, 2600]]),
   // ventilation grille in the desk top above the low radiator
   Array.from({ length: 7 }, (_, i) => `<line class="grille" x1="140" y1="${430 + i * 90}" x2="470" y2="${430 + i * 90}"/>`).join('') +
   `<text class="fsub" x="275" y="1180" text-anchor="middle">mřížka</text>`,
