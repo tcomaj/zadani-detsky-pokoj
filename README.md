@@ -1,18 +1,16 @@
 # zadani-detsky-pokoj
 
-Password-protected, single-file brief for an interior designer (Czech), hosted on GitHub Pages.
+Single-file brief for an interior designer (Czech), hosted on GitHub Pages.
 
-`index.html` is the only published file. It contains a password prompt and an AES-256-GCM
-encrypted payload (PBKDF2-SHA256, 600k iterations) holding the full page with all photos inlined.
-Nothing readable is stored in this repository.
+`index.html` is the only published file: the full page with all photos inlined.
 
 ## Build
 
-Sources (`src/`, `../build/img/`) are kept outside the repo on purpose.
+Sources (`src/`, `../build/img/`) are kept outside the repo.
 
 ```sh
-PASSWORD='...' node build.mjs
+node build.mjs                  # unencrypted (current)
+PASSWORD='...' node build.mjs   # optional: wrap in a password prompt (AES-256-GCM, PBKDF2-SHA256)
 ```
 
-The script inlines the photos, renders the floor plan SVG, encrypts the page, verifies a
-decrypt round-trip and writes `index.html`.
+The script inlines the photos, renders the floor plan SVG and writes `index.html`.

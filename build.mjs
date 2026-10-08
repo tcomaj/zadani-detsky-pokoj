@@ -11,8 +11,7 @@ import { fileURLToPath } from 'node:url';
 import { webcrypto, randomBytes } from 'node:crypto';
 
 const here = dirname(fileURLToPath(import.meta.url));
-const password = process.env.PASSWORD;
-if (!password) { console.error('Set PASSWORD env var.'); process.exit(1); }
+const password = process.env.PASSWORD || ''; // empty = publish unencrypted
 
 const imgDir = resolve(here, '../build/img');
 const tpl = readFileSync(resolve(here, 'src/page.html'), 'utf8');
@@ -129,6 +128,12 @@ html = html.replace(/\{\{IMG:([a-z0-9-]+)\}\}/g, (_, name) => {
 });
 if (/\{\{[A-Z_:a-z0-9-]+\}\}/.test(html)) throw new Error('unreplaced placeholder in page');
 writeFileSync(resolve(here, '../build/preview.html'), html); // unencrypted preview, stays outside the repo
+
+if (!password) {
+  writeFileSync(resolve(here, 'index.html'), html);
+  console.log(`index.html written unencrypted: ${(html.length / 1e6).toFixed(2)} MB`);
+  process.exit(0);
+}
 
 // ---------- encrypt ----------
 const subtle = webcrypto.subtle;
