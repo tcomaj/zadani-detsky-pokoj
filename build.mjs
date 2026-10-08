@@ -72,6 +72,8 @@ function plan(furniture = '') { return `
     .pillow { fill: #ffffff; stroke: #2a2925; stroke-width: ${SW * 0.7}; }
     .door { stroke: #2a2925; stroke-width: ${SW * 0.7}; stroke-dasharray: 40 40; }
     .chair { fill: #ffffff; stroke: #2a2925; stroke-width: ${SW * 0.7}; }
+    .grille { stroke: #6b675f; stroke-width: ${SW * 0.6}; }
+    .pullout { fill: #f3f5f6; stroke: #2a2925; stroke-width: ${SW * 0.7}; stroke-dasharray: 60 50; }
     .flbl { font: 600 115px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif; fill: #2a2925; paint-order: stroke; stroke: #f1efe9; stroke-width: 60px; stroke-linejoin: round; }
     .fsub { font: 95px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif; fill: #6b675f; paint-order: stroke; stroke: #f1efe9; stroke-width: 60px; stroke-linejoin: round; }
     .zone { font: 500 110px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif; fill: #9a948a; letter-spacing: 10px; }
@@ -170,6 +172,21 @@ const v2 = [
   zone(1550, 3250, 'volná plocha'),
 ].join('');
 
+// Variant C: one SLÄKT bed with pull-out on the right wall, long desk on the radiator wall
+const slaktL = 2060, slaktW = 960, slaktOut = 1890;
+const v3 = [
+  wardrobe(0, 4200, 2500, 600, 'skříňová stěna', '250 × 60, ke stropu', 4),
+  `<rect class="pullout" x="${W - slaktOut}" y="600" width="${slaktOut - slaktW}" height="${slaktL}" rx="40"/>` +
+  `<text class="fsub" x="${W - slaktOut + (slaktOut - slaktW) / 2}" y="${600 + slaktL / 2 - 60}" text-anchor="middle">přistýlka</text>` +
+  `<text class="fsub" x="${W - slaktOut + (slaktOut - slaktW) / 2}" y="${600 + slaktL / 2 + 70}" text-anchor="middle">(vysunutá na noc)</text>`,
+  bed(W - slaktW, 600, slaktW, slaktL, 'SLÄKT', '96 × 206', 'bottom'),
+  desk(0, 300, 500, 2800, 'stůl', '280 × 50, zavěšený', [[760, 1300], [760, 2500]]),
+  // ventilation grille in the desk top above the low radiator
+  Array.from({ length: 7 }, (_, i) => `<line class="grille" x1="140" y1="${430 + i * 90}" x2="440" y2="${430 + i * 90}"/>`).join('') +
+  `<text class="fsub" x="250" y="1180" text-anchor="middle">mřížka</text>`,
+  zone(1400, 3450, 'volná plocha'),
+].join('');
+
 // ---------- render pages ----------
 function inlineImages(s) {
   return s.replace(/\{\{IMG:([a-z0-9-]+)\}\}/g, (_, name) => {
@@ -186,7 +203,7 @@ function render(src, vars) {
   return s;
 }
 
-const navrh = render('navrh.html', { PLAN_V1: plan(v1), PLAN_V2: plan(v2) });
+const navrh = render('navrh.html', { PLAN_V1: plan(v1), PLAN_V2: plan(v2), PLAN_V3: plan(v3) });
 mkdirSync(resolve(here, 'navrh'), { recursive: true });
 writeFileSync(resolve(here, 'navrh/index.html'), navrh);
 writeFileSync(resolve(here, '../build/preview-navrh.html'), navrh);

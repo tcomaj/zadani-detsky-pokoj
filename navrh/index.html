@@ -29,6 +29,7 @@
   .meta td { padding: 7px 0; border-top: 1px solid var(--line); vertical-align: top; }
   .meta td:first-child { font-weight: 600; white-space: nowrap; padding-right: 12px; }
   .meta .note { color: var(--muted); font-size: 14px; margin-top: 14px; }
+  .meta a { color: var(--accent); }
   .box { margin: 24px 0 0; padding: 18px 22px; background: #f1efe9; border-radius: 6px; font-size: 16px; }
   .box p:last-child, .box ul:last-child { margin-bottom: 0; }
   footer { border-top: 1px solid var(--line); padding-top: 20px; font-size: 14px; color: var(--muted); }
@@ -69,6 +70,8 @@
     .pillow { fill: #ffffff; stroke: #2a2925; stroke-width: 8.399999999999999; }
     .door { stroke: #2a2925; stroke-width: 8.399999999999999; stroke-dasharray: 40 40; }
     .chair { fill: #ffffff; stroke: #2a2925; stroke-width: 8.399999999999999; }
+    .grille { stroke: #6b675f; stroke-width: 7.199999999999999; }
+    .pullout { fill: #f3f5f6; stroke: #2a2925; stroke-width: 8.399999999999999; stroke-dasharray: 60 50; }
     .flbl { font: 600 115px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif; fill: #2a2925; paint-order: stroke; stroke: #f1efe9; stroke-width: 60px; stroke-linejoin: round; }
     .fsub { font: 95px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif; fill: #6b675f; paint-order: stroke; stroke: #f1efe9; stroke-width: 60px; stroke-linejoin: round; }
     .zone { font: 500 110px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif; fill: #9a948a; letter-spacing: 10px; }
@@ -218,6 +221,8 @@
     .pillow { fill: #ffffff; stroke: #2a2925; stroke-width: 8.399999999999999; }
     .door { stroke: #2a2925; stroke-width: 8.399999999999999; stroke-dasharray: 40 40; }
     .chair { fill: #ffffff; stroke: #2a2925; stroke-width: 8.399999999999999; }
+    .grille { stroke: #6b675f; stroke-width: 7.199999999999999; }
+    .pullout { fill: #f3f5f6; stroke: #2a2925; stroke-width: 8.399999999999999; stroke-dasharray: 60 50; }
     .flbl { font: 600 115px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif; fill: #2a2925; paint-order: stroke; stroke: #f1efe9; stroke-width: 60px; stroke-linejoin: round; }
     .fsub { font: 95px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif; fill: #6b675f; paint-order: stroke; stroke: #f1efe9; stroke-width: 60px; stroke-linejoin: round; }
     .zone { font: 500 110px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif; fill: #9a948a; letter-spacing: 10px; }
@@ -346,17 +351,168 @@
     </div>
   </section>
 
+  <section id="v3">
+    <h2><span class="num">C</span>Postel s přistýlkou a dlouhý stůl</h2>
+    <p class="sub">Jedna postel IKEA SLÄKT s výsuvnou přistýlkou u pravé stěny místo dvou postelí. Uvolní se celá levá stěna pro dlouhý zavěšený stůl přes radiátor a vznikne nejvíc volné podlahy.</p>
+    <div class="plan">
+      <div>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1150 -1250 4670 6350" role="img" aria-label="Půdorys pokoje 2500 × 4800 mm">
+  <style>
+    .wall { fill: #2a2925; }
+    .floor { fill: #ffffff; }
+    .thin { stroke: #2a2925; stroke-width: 12; fill: none; }
+    .swing { stroke: #2a2925; stroke-width: 12; fill: none; stroke-dasharray: 60 50; }
+    .dim line { stroke: #8a857b; stroke-width: 12; }
+    .dim text, .lbl { font: 130px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif; fill: #3a3833; }
+    .lbl.muted { fill: #8a857b; }
+    .rad { fill: #ffffff; stroke: #2a2925; stroke-width: 12; }
+    .furn { fill: #ece9e1; stroke: #2a2925; stroke-width: 12; }
+    .bed { fill: #e2e7ea; stroke: #2a2925; stroke-width: 12; }
+    .pillow { fill: #ffffff; stroke: #2a2925; stroke-width: 8.399999999999999; }
+    .door { stroke: #2a2925; stroke-width: 8.399999999999999; stroke-dasharray: 40 40; }
+    .chair { fill: #ffffff; stroke: #2a2925; stroke-width: 8.399999999999999; }
+    .grille { stroke: #6b675f; stroke-width: 7.199999999999999; }
+    .pullout { fill: #f3f5f6; stroke: #2a2925; stroke-width: 8.399999999999999; stroke-dasharray: 60 50; }
+    .flbl { font: 600 115px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif; fill: #2a2925; paint-order: stroke; stroke: #f1efe9; stroke-width: 60px; stroke-linejoin: round; }
+    .fsub { font: 95px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif; fill: #6b675f; paint-order: stroke; stroke: #f1efe9; stroke-width: 60px; stroke-linejoin: round; }
+    .zone { font: 500 110px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif; fill: #9a948a; letter-spacing: 10px; }
+  </style>
+
+  <!-- walls -->
+  <rect class="wall" x="-150" y="-150" width="2800" height="5100"/>
+  <rect class="floor" x="0" y="0" width="2500" height="4800"/>
+
+  <!-- window opening: cut wall, glass line, mullion -->
+  <rect class="floor" x="500" y="-150" width="1700" height="150"/>
+  <line class="thin" x1="500" y1="-75" x2="2200" y2="-75"/>
+  <line class="thin" x1="500" y1="-150" x2="500" y2="0"/>
+  <line class="thin" x1="2200" y1="-150" x2="2200" y2="0"/>
+  <line class="thin" x1="1400" y1="-150" x2="1400" y2="0"/>
+  <!-- opening leaf, hinged left, swings into the room -->
+  <line class="thin" x1="500" y1="0" x2="500" y2="900"/>
+  <path class="swing" d="M1400,0 A900,900 0 0 1 500,900"/>
+  <text class="lbl muted" x="1250" y="-270" text-anchor="middle">zahrada · francouzské okno</text>
+  
+
+  <!-- door on right wall, hinged at window-side jamb, swings into the room towards the back wall -->
+  <rect class="floor" x="2500" y="3300" width="150" height="900"/>
+  <line class="thin" x1="2500" y1="3300" x2="1600" y2="3300"/>
+  <path class="swing" d="M2500,4200 A900,900 0 0 1 1600,3300"/>
+  <text class="lbl" x="2080" y="3630" text-anchor="middle">vstup</text>
+
+  <!-- radiator on left wall -->
+  <rect class="rad" x="0" y="400" width="100" height="600"/>
+  <text class="lbl" x="190" y="743.3333333333334">topení</text>
+
+  <rect class="furn" x="0" y="4200" width="2500" height="600"/><line class="door" x1="625" y1="4200" x2="625" y2="4800"/><line class="door" x1="1250" y1="4200" x2="1250" y2="4800"/><line class="door" x1="1875" y1="4200" x2="1875" y2="4800"/><text class="flbl" x="1250" y="4480" text-anchor="middle">skříňová stěna</text><text class="fsub" x="1250" y="4620" text-anchor="middle">250 × 60, ke stropu</text><rect class="pullout" x="610" y="600" width="930" height="2060" rx="40"/><text class="fsub" x="1075" y="1570" text-anchor="middle">přistýlka</text><text class="fsub" x="1075" y="1700" text-anchor="middle">(vysunutá na noc)</text><rect class="bed" x="1540" y="600" width="960" height="2060" rx="40"/><rect class="pillow" x="1660" y="2280" width="720" height="300" rx="60"/><text class="flbl" x="2020" y="1610" text-anchor="middle">SLÄKT</text><text class="fsub" x="2020" y="1750" text-anchor="middle">96 × 206</text><rect class="furn" x="0" y="300" width="500" height="2800"/><circle class="chair" cx="760" cy="1300" r="190"/><circle class="chair" cx="760" cy="2500" r="190"/><text class="flbl" x="250" y="1680" text-anchor="middle">stůl</text><text class="fsub" x="250" y="1820" text-anchor="middle">280 × 50, zavěšený</text><line class="grille" x1="140" y1="430" x2="440" y2="430"/><line class="grille" x1="140" y1="520" x2="440" y2="520"/><line class="grille" x1="140" y1="610" x2="440" y2="610"/><line class="grille" x1="140" y1="700" x2="440" y2="700"/><line class="grille" x1="140" y1="790" x2="440" y2="790"/><line class="grille" x1="140" y1="880" x2="440" y2="880"/><line class="grille" x1="140" y1="970" x2="440" y2="970"/><text class="fsub" x="250" y="1180" text-anchor="middle">mřížka</text><text class="zone" x="1400" y="3450" text-anchor="middle">volná plocha</text>
+
+  <!-- dimensions: window wall -->
+  <g class="dim">
+    <line x1="0" y1="-150" x2="0" y2="-600"/>
+    <line x1="500" y1="-150" x2="500" y2="-600"/>
+    <line x1="0" y1="-520" x2="500" y2="-520"/>
+    <line x1="-55" y1="-465" x2="55" y2="-575" transform="rotate(0 0 -520)"/><line x1="445" y1="-465" x2="555" y2="-575" transform="rotate(0 500 -520)"/>
+    <text x="250" y="-560" text-anchor="middle">500</text>
+  </g>
+  <g class="dim">
+    <line x1="500" y1="-150" x2="500" y2="-600"/>
+    <line x1="2200" y1="-150" x2="2200" y2="-600"/>
+    <line x1="500" y1="-520" x2="2200" y2="-520"/>
+    <line x1="445" y1="-465" x2="555" y2="-575" transform="rotate(0 500 -520)"/><line x1="2145" y1="-465" x2="2255" y2="-575" transform="rotate(0 2200 -520)"/>
+    <text x="1350" y="-560" text-anchor="middle">1 700</text>
+  </g>
+  <g class="dim">
+    <line x1="2200" y1="-150" x2="2200" y2="-600"/>
+    <line x1="2500" y1="-150" x2="2500" y2="-600"/>
+    <line x1="2200" y1="-520" x2="2500" y2="-520"/>
+    <line x1="2145" y1="-465" x2="2255" y2="-575" transform="rotate(0 2200 -520)"/><line x1="2445" y1="-465" x2="2555" y2="-575" transform="rotate(0 2500 -520)"/>
+    <text x="2350" y="-560" text-anchor="middle">300</text>
+  </g>
+  <g class="dim">
+    <line x1="0" y1="-150" x2="0" y2="-980"/>
+    <line x1="2500" y1="-150" x2="2500" y2="-980"/>
+    <line x1="0" y1="-900" x2="2500" y2="-900"/>
+    <line x1="-55" y1="-845" x2="55" y2="-955" transform="rotate(0 0 -900)"/><line x1="2445" y1="-845" x2="2555" y2="-955" transform="rotate(0 2500 -900)"/>
+    <text x="1250" y="-940" text-anchor="middle">2 500</text>
+  </g>
+  <!-- left wall: radiator, overall -->
+  <g class="dim">
+    <line x1="-150" y1="0" x2="-440" y2="0"/>
+    <line x1="0" y1="400" x2="-440" y2="400"/>
+    <line x1="-520" y1="0" x2="-520" y2="400"/>
+    <line x1="-575" y1="55" x2="-465" y2="-55" transform="rotate(0 -520 0)"/><line x1="-575" y1="455" x2="-465" y2="345" transform="rotate(0 -520 400)"/>
+    <text x="-565" y="200" text-anchor="middle" transform="rotate(-90 -565 200)">400</text>
+  </g>
+  <g class="dim">
+    <line x1="0" y1="400" x2="-440" y2="400"/>
+    <line x1="0" y1="1000" x2="-440" y2="1000"/>
+    <line x1="-520" y1="400" x2="-520" y2="1000"/>
+    <line x1="-575" y1="455" x2="-465" y2="345" transform="rotate(0 -520 400)"/><line x1="-575" y1="1055" x2="-465" y2="945" transform="rotate(0 -520 1000)"/>
+    <text x="-565" y="700" text-anchor="middle" transform="rotate(-90 -565 700)">600</text>
+  </g>
+  <g class="dim">
+    <line x1="-150" y1="0" x2="-820" y2="0"/>
+    <line x1="-150" y1="4800" x2="-820" y2="4800"/>
+    <line x1="-900" y1="0" x2="-900" y2="4800"/>
+    <line x1="-955" y1="55" x2="-845" y2="-55" transform="rotate(0 -900 0)"/><line x1="-955" y1="4855" x2="-845" y2="4745" transform="rotate(0 -900 4800)"/>
+    <text x="-945" y="2400" text-anchor="middle" transform="rotate(-90 -945 2400)">4 800</text>
+  </g>
+  <!-- right wall: door -->
+  <g class="dim">
+    <line x1="2650" y1="0" x2="2940" y2="0"/>
+    <line x1="2650" y1="3300" x2="2940" y2="3300"/>
+    <line x1="3020" y1="0" x2="3020" y2="3300"/>
+    <line x1="2965" y1="55" x2="3075" y2="-55" transform="rotate(0 3020 0)"/><line x1="2965" y1="3355" x2="3075" y2="3245" transform="rotate(0 3020 3300)"/>
+    <text x="3065" y="1650" text-anchor="middle" transform="rotate(90 3065 1650)">3 300</text>
+  </g>
+  <g class="dim">
+    <line x1="2650" y1="3300" x2="2940" y2="3300"/>
+    <line x1="2650" y1="4200" x2="2940" y2="4200"/>
+    <line x1="3020" y1="3300" x2="3020" y2="4200"/>
+    <line x1="2965" y1="3355" x2="3075" y2="3245" transform="rotate(0 3020 3300)"/><line x1="2965" y1="4255" x2="3075" y2="4145" transform="rotate(0 3020 4200)"/>
+    <text x="3065" y="3750" text-anchor="middle" transform="rotate(90 3065 3750)">900</text>
+  </g>
+  <g class="dim">
+    <line x1="2650" y1="4200" x2="2940" y2="4200"/>
+    <line x1="2650" y1="4800" x2="2940" y2="4800"/>
+    <line x1="3020" y1="4200" x2="3020" y2="4800"/>
+    <line x1="2965" y1="4255" x2="3075" y2="4145" transform="rotate(0 3020 4200)"/><line x1="2965" y1="4855" x2="3075" y2="4745" transform="rotate(0 3020 4800)"/>
+    <text x="3065" y="4500" text-anchor="middle" transform="rotate(90 3065 4500)">600</text>
+  </g>
+
+  <!-- scale + note -->
+  <g class="dim">
+    <line x1="0" y1="5320" x2="1000" y2="5320"/>
+    <line x1="-55" y1="5375" x2="55" y2="5265" transform="rotate(0 0 5320)"/><line x1="945" y1="5375" x2="1055" y2="5265" transform="rotate(0 1000 5320)"/>
+    <text x="500" y="5280" text-anchor="middle">1 m</text>
+  </g>
+  <text class="lbl muted" x="2500" y="5280" text-anchor="end">výška stropu 2 600 mm</text>
+</svg></div>
+      <div class="meta">
+        <table>
+          <tr><td>Postel</td><td><a href="https://www.ikea.com/cz/cs/p/slaekt-ram-detske-postele-luzko-a-ul-pr-bila-s89227731/">IKEA SLÄKT</a> s přistýlkou a úložnými zásuvkami, 96 × 206 cm, matrace 90 × 200 nahoře i dole. Na noc se přistýlka vysune do pokoje, celková šířka 189 cm (čárkovaně).</td></tr>
+          <tr><td>Stůl</td><td>280 × 50 cm na míru, zavěšený na stěně bez nohou, od okenní stěny (30 cm odstup) až za radiátor. 140 cm na dítě. Hloubka 50 proto, aby se přistýlka vysunula i se zasunutými židlemi; 60 jde, pokud židle zajedou úplně pod stůl.</td></tr>
+          <tr><td>Radiátor</td><td>Je nízký, zůstane pod deskou. V desce nad ním větrací mřížka, aby teplo šlo nahoru a nehřálo jen spodek stolu.</td></tr>
+          <tr><td>Skříňová stěna</td><td>Stejně jako ve variantě A.</td></tr>
+          <tr><td>Volná plocha</td><td>≈ 6,5 m² přes den (bez dosahu dveří), nejvíc ze všech variant. V noci přistýlka zabere 1,9 m² z uličky.</td></tr>
+        </table>
+        <p class="note">Přistýlka je nízko (zásuvka pod postelí). Pro malého kluka je to na pár let ideální, jako trvalé řešení pro dva větší kluky je to kompromis – v zadání jsou klasické postele. Výhoda: zásuvky v posteli jsou další uzavřený úložný prostor.</p>
+      </div>
+    </div>
+  </section>
+
   <section id="pozn">
     <h2>Co z toho plyne</h2>
     <h3>Proč takto</h3>
     <ul>
       <li>Dvě klasické postele 90 × 200 se do pokoje 250 × 480 vejdou jen proti sobě u okna. Za sebou u jedné stěny chybí cca 10 cm (otvíravé křídlo okna potřebuje 90 cm volných u levé stěny).</li>
       <li>Zadní stěna je jediné místo pro hlubokou skříň přes celou šířku: před dveřmi do pokoje zbývá přesně 60 cm, dveře se otevírají směrem od ní.</li>
-      <li>Skříňová stěna až ke stropu + zásuvky pod oběma postelemi dávají dohromady hodně uzavřeného úložného prostoru bez jediné otevřené police.</li>
+      <li>Skříňová stěna až ke stropu + zásuvky pod postelemi dávají dohromady hodně uzavřeného úložného prostoru bez jediné otevřené police.</li>
+      <li>Varianta C vyměňuje druhou klasickou postel za přistýlku. Za to získá dlouhý stůl pro dva (280 cm) a o 1,2 m² víc volné plochy.</li>
     </ul>
     <h3>Co je těsné</h3>
     <ul>
-      <li>Stůl pro dva má jen 120 cm (60 cm na dítě). Pro školáky lepší 140–160, ale to se bez úpravy nevejde.</li>
+      <li>Ve variantách A a B má stůl pro dva jen 120 cm (60 cm na dítě). Pro školáky lepší 140–160, ale to se se dvěma klasickými postelemi nevejde.</li>
       <li>Postel A ve variantě A má hlavu hned za radiátorem (radiátor zůstává volný, postel stojí až za ním).</li>
     </ul>
     <div class="box">
