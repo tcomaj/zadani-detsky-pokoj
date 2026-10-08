@@ -19,9 +19,9 @@ const tpl = readFileSync(resolve(here, 'src/page.html'), 'utf8');
 const shell = readFileSync(resolve(here, 'src/shell.html'), 'utf8');
 
 // ---------- floor plan (mm, y down, window at top) ----------
-const W = 2530, H = 4800, T = 150;              // interior, wall thickness
-const winL = 600, winW = 1550, winLeaf = 900;   // window: left wall gap, width, opening leaf (hinged right)
-const doorFromBack = 600, doorW = 840;          // door on right wall, hinged at back-side jamb
+const W = 2500, H = 4800, T = 150;              // interior, wall thickness
+const winL = 500, winW = 1700, winLeaf = 900;   // window: left wall gap, width, opening leaf (hinged right)
+const doorFromBack = 600, doorW = 900;          // door on right wall, hinged at back-side jamb
 const radFromTop = 400, radLen = 600, radDepth = 100;
 const FS = 130, TICK = 55, SW = 12;
 
@@ -59,7 +59,7 @@ const doorY2 = H - doorFromBack;              // hinge (back-side jamb)
 const doorY1 = doorY2 - doorW;
 
 const planSvg = `
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1150 -1250 4700 6350" role="img" aria-label="Půdorys pokoje 2530 × 4800 mm">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1150 -1250 4670 6350" role="img" aria-label="Půdorys pokoje 2500 × 4800 mm">
   <style>
     .wall { fill: #2a2925; }
     .floor { fill: #ffffff; }
@@ -87,28 +87,28 @@ const planSvg = `
   <text class="lbl muted" x="${W / 2}" y="${-T - 120}" text-anchor="middle">zahrada</text>
   <text class="lbl" x="${winL + winW / 2}" y="${winLeaf + 300}" text-anchor="middle">francouzské okno</text>
 
-  <!-- door on right wall, hinged at back-side jamb, swings into the room -->
+  <!-- door on right wall, hinged at window-side jamb, swings into the room towards the back wall -->
   <rect class="floor" x="${W}" y="${doorY1}" width="${T}" height="${doorW}"/>
-  <line class="thin" x1="${W}" y1="${doorY2}" x2="${W - doorW}" y2="${doorY2}"/>
-  <path class="swing" d="M${W},${doorY1} A${doorW},${doorW} 0 0 0 ${W - doorW},${doorY2}"/>
-  <text class="lbl" x="${W - doorW / 2}" y="${doorY1 - 120}" text-anchor="middle">vstup</text>
+  <line class="thin" x1="${W}" y1="${doorY1}" x2="${W - doorW}" y2="${doorY1}"/>
+  <path class="swing" d="M${W},${doorY2} A${doorW},${doorW} 0 0 1 ${W - doorW},${doorY1}"/>
+  <text class="lbl" x="${W - doorW / 2}" y="${doorY2 + 250}" text-anchor="middle">vstup</text>
 
   <!-- radiator on left wall -->
   <rect class="rad" x="0" y="${radFromTop}" width="${radDepth}" height="${radLen}"/>
   <text class="lbl" x="${radDepth + 90}" y="${radFromTop + radLen / 2 + FS / 3}">topení</text>
 
   <!-- dimensions: window wall -->
-  ${dimH(0, winL, -520, '600', -T, -T)}
-  ${dimH(winL, winR, -520, '1 550', -T, -T)}
-  ${dimH(winR, W, -520, '380', -T, -T)}
-  ${dimH(0, W, -900, '2 530', -T, -T)}
+  ${dimH(0, winL, -520, '500', -T, -T)}
+  ${dimH(winL, winR, -520, '1 700', -T, -T)}
+  ${dimH(winR, W, -520, '300', -T, -T)}
+  ${dimH(0, W, -900, '2 500', -T, -T)}
   <!-- left wall: radiator, overall -->
   ${dimV(-520, 0, radFromTop, '400', -T, 0)}
   ${dimV(-520, radFromTop, radFromTop + radLen, '600', 0, 0)}
   ${dimV(-900, 0, H, '4 800', -T, -T)}
   <!-- right wall: door -->
-  ${dimV(W + 520, 0, doorY1, '3 360', W + T, W + T, 1)}
-  ${dimV(W + 520, doorY1, doorY2, '840', W + T, W + T, 1)}
+  ${dimV(W + 520, 0, doorY1, '3 300', W + T, W + T, 1)}
+  ${dimV(W + 520, doorY1, doorY2, '900', W + T, W + T, 1)}
   ${dimV(W + 520, doorY2, H, '600', W + T, W + T, 1)}
 
   <!-- scale + note -->
