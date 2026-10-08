@@ -24,6 +24,8 @@
   li { margin: 5px 0; }
   .plan { display: grid; grid-template-columns: minmax(0, 1fr) 280px; gap: 28px; align-items: start; }
   .plan svg { width: 100%; height: auto; display: block; }
+  .elev { margin: 8px 0 20px; }
+  .elev svg { width: 100%; height: auto; display: block; }
   .meta { font-size: 15px; }
   .meta table { border-collapse: collapse; width: 100%; }
   .meta td { padding: 7px 0; border-top: 1px solid var(--line); vertical-align: top; }
@@ -502,6 +504,137 @@
         <p class="note"><strong>Jak vyřešit noční průchod:</strong> buď zkrátit stůl na 124 cm (od okna po začátek postele), pak zůstane podél levé stěny ulička 61 cm – ale ztratí se hlavní výhoda dlouhého stolu; nebo to přijmout jako provozní pravidlo (okno zavřít před uložením, přistýlka je nízká). Jiné rozmístění, které by v pokoji 250 cm širokém dalo dohromady dlouhý stůl, vysunutou přistýlku a průchod, jsme nenašli. <strong>Volíme druhou možnost: dlouhý stůl a provozní pravidlo.</strong></p>
       </div>
     </div>
+  </section>
+
+  <section id="pohled">
+    <h2><span class="num">C</span>Pohled na levou stěnu</h2>
+    <p class="sub">Stěna s radiátorem ve variantě C, při pohledu od postele. Výšky jsou orientační.</p>
+    <div class="elev">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1150 -750 6950 4050" role="img" aria-label="Pohled na levou stěnu, varianta C">
+  <style>
+    .wall { fill: #2a2925; }
+    .thin { stroke: #2a2925; stroke-width: 12; fill: none; }
+    .furn { fill: #ece9e1; stroke: #2a2925; stroke-width: 12; }
+    .peg { fill: url(#dots); stroke: #2a2925; stroke-width: 8.399999999999999; }
+    .grille { stroke: #6b675f; stroke-width: 7.199999999999999; stroke-dasharray: 40 40; fill: none; }
+    .dim line { stroke: #8a857b; stroke-width: 12; }
+    .dim text, .lbl { font: 130px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif; fill: #3a3833; }
+    .lbl.muted { fill: #8a857b; }
+    .flbl { font: 600 115px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif; fill: #2a2925; }
+    .fsub { font: 95px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif; fill: #6b675f; }
+  </style>
+  <defs>
+    <pattern id="dots" width="100" height="100" patternUnits="userSpaceOnUse">
+      <rect width="100" height="100" fill="#f6f4ee"/>
+      <circle cx="50" cy="50" r="12" fill="#b9b3a7"/>
+    </pattern>
+  </defs>
+
+  <!-- wall surface, floor, ceiling, side walls in section -->
+  <rect x="0" y="0" width="4800" height="2600" fill="#ffffff"/>
+  <rect class="wall" x="-150" y="-150" width="5100" height="150"/>
+  <rect class="wall" x="-150" y="2600" width="5100" height="150"/>
+  <rect class="wall" x="-150" y="0" width="150" height="2600"/>
+  <rect class="wall" x="4800" y="0" width="150" height="2600"/>
+  <text class="lbl muted" x="-210" y="1300" text-anchor="middle" transform="rotate(-90 -210 1300)">okenní stěna</text>
+
+  <!-- wardrobe wall seen from the side -->
+  <rect class="furn" x="4200" y="0" width="600" height="2600"/>
+  <text class="flbl" x="4500" y="1300" text-anchor="middle" transform="rotate(-90 4500 1300)">skříňová stěna (bok)</text>
+
+  <!-- radiator -->
+  <rect class="furn" x="400" y="2150" width="600" height="300"/>
+  <line class="thin" x1="460" y1="2180" x2="460" y2="2420"/><line class="thin" x1="520" y1="2180" x2="520" y2="2420"/><line class="thin" x1="580" y1="2180" x2="580" y2="2420"/><line class="thin" x1="640" y1="2180" x2="640" y2="2420"/><line class="thin" x1="700" y1="2180" x2="700" y2="2420"/><line class="thin" x1="760" y1="2180" x2="760" y2="2420"/><line class="thin" x1="820" y1="2180" x2="820" y2="2420"/><line class="thin" x1="880" y1="2180" x2="880" y2="2420"/><line class="thin" x1="940" y1="2180" x2="940" y2="2420"/>
+  <text class="fsub" x="700" y="2600" text-anchor="middle">radiátor</text>
+
+  <!-- pegboard band -->
+  <rect class="peg" x="10" y="1140" width="740" height="560" rx="30"/><rect class="peg" x="770" y="1140" width="740" height="560" rx="30"/><rect class="peg" x="1530" y="1140" width="740" height="560" rx="30"/><rect class="peg" x="2290" y="1140" width="740" height="560" rx="30"/>
+  <text class="fsub" x="1550" y="1080" text-anchor="middle">děrovaná deska SKÅDIS, 4 × 76 × 56 cm</text>
+
+  <!-- chairs (behind the desk slab) -->
+  <g class="thin">
+    <rect x="1300" y="2170" width="400" height="40" rx="15" fill="#fff"/>
+    <rect x="1320" y="1780" width="360" height="330" rx="40" fill="#fff"/>
+    <line x1="1330" y1="2210" x2="1310" y2="2600"/>
+    <line x1="1670" y1="2210" x2="1690" y2="2600"/>
+  </g><g class="thin">
+    <rect x="2400" y="2170" width="400" height="40" rx="15" fill="#fff"/>
+    <rect x="2420" y="1780" width="360" height="330" rx="40" fill="#fff"/>
+    <line x1="2430" y1="2210" x2="2410" y2="2600"/>
+    <line x1="2770" y1="2210" x2="2790" y2="2600"/>
+  </g>
+
+  <!-- floating desk slab -->
+  <rect class="furn" x="0" y="1840" width="3100" height="40"/>
+  <rect class="grille" x="400" y="1810" width="600" height="100"/>
+  <text class="fsub" x="700" y="2030" text-anchor="middle">mřížka v desce</text>
+  <text class="flbl" x="2100" y="2030" text-anchor="middle">zavěšený stůl 310 × 50, bez nohou</text>
+
+  <!-- dimensions -->
+  <g class="dim">
+    <line x1="0" y1="0" x2="0" y2="-480"/>
+    <line x1="3100" y1="0" x2="3100" y2="-480"/>
+    <line x1="0" y1="-400" x2="3100" y2="-400"/>
+    <line x1="-55" y1="-345" x2="55" y2="-455" transform="rotate(0 0 -400)"/><line x1="3045" y1="-345" x2="3155" y2="-455" transform="rotate(0 3100 -400)"/>
+    <text x="1550" y="-440" text-anchor="middle">3 100</text>
+  </g>
+  <g class="dim">
+    <line x1="3100" y1="0" x2="3100" y2="-480"/>
+    <line x1="4200" y1="0" x2="4200" y2="-480"/>
+    <line x1="3100" y1="-400" x2="4200" y2="-400"/>
+    <line x1="3045" y1="-345" x2="3155" y2="-455" transform="rotate(0 3100 -400)"/><line x1="4145" y1="-345" x2="4255" y2="-455" transform="rotate(0 4200 -400)"/>
+    <text x="3650" y="-440" text-anchor="middle">1 100</text>
+  </g>
+  <g class="dim">
+    <line x1="4200" y1="0" x2="4200" y2="-480"/>
+    <line x1="4800" y1="0" x2="4800" y2="-480"/>
+    <line x1="4200" y1="-400" x2="4800" y2="-400"/>
+    <line x1="4145" y1="-345" x2="4255" y2="-455" transform="rotate(0 4200 -400)"/><line x1="4745" y1="-345" x2="4855" y2="-455" transform="rotate(0 4800 -400)"/>
+    <text x="4500" y="-440" text-anchor="middle">600</text>
+  </g>
+  <g class="dim">
+    <line x1="0" y1="1880" x2="-440" y2="1880"/>
+    <line x1="0" y1="2600" x2="-440" y2="2600"/>
+    <line x1="-520" y1="1880" x2="-520" y2="2600"/>
+    <line x1="-575" y1="1935" x2="-465" y2="1825" transform="rotate(0 -520 1880)"/><line x1="-575" y1="2655" x2="-465" y2="2545" transform="rotate(0 -520 2600)"/>
+    <text x="-565" y="2240" text-anchor="middle" transform="rotate(-90 -565 2240)">720</text>
+  </g>
+  <g class="dim">
+    <line x1="-150" y1="0" x2="-740" y2="0"/>
+    <line x1="-150" y1="2600" x2="-740" y2="2600"/>
+    <line x1="-820" y1="0" x2="-820" y2="2600"/>
+    <line x1="-875" y1="55" x2="-765" y2="-55" transform="rotate(0 -820 0)"/><line x1="-875" y1="2655" x2="-765" y2="2545" transform="rotate(0 -820 2600)"/>
+    <text x="-865" y="1300" text-anchor="middle" transform="rotate(-90 -865 1300)">2 600</text>
+  </g>
+  <g class="dim">
+    <line x1="4950" y1="1140" x2="5240" y2="1140"/>
+    <line x1="4950" y1="1700" x2="5240" y2="1700"/>
+    <line x1="5320" y1="1140" x2="5320" y2="1700"/>
+    <line x1="5265" y1="1195" x2="5375" y2="1085" transform="rotate(0 5320 1140)"/><line x1="5265" y1="1755" x2="5375" y2="1645" transform="rotate(0 5320 1700)"/>
+    <text x="5365" y="1420" text-anchor="middle" transform="rotate(90 5365 1420)">560</text>
+  </g>
+  <g class="dim">
+    <line x1="4950" y1="1700" x2="5240" y2="1700"/>
+    <line x1="4950" y1="1880" x2="5240" y2="1880"/>
+    <line x1="5320" y1="1700" x2="5320" y2="1880"/>
+    <line x1="5265" y1="1755" x2="5375" y2="1645" transform="rotate(0 5320 1700)"/><line x1="5265" y1="1935" x2="5375" y2="1825" transform="rotate(0 5320 1880)"/>
+    <text x="5365" y="1790" text-anchor="middle" transform="rotate(90 5365 1790)">180</text>
+  </g>
+  <g class="dim">
+    <line x1="0" y1="3120" x2="1000" y2="3120"/>
+    <line x1="-55" y1="3175" x2="55" y2="3065" transform="rotate(0 0 3120)"/><line x1="945" y1="3175" x2="1055" y2="3065" transform="rotate(0 1000 3120)"/>
+    <text x="500" y="3080" text-anchor="middle">1 m</text>
+  </g>
+</svg></div>
+    <ul>
+      <li>Deska 310 × 50 cm zavěšená na skrytých konzolách, výška 72 cm. Pro předškoláka zatím židle s nastavitelnou výškou a stupátkem pod nohy; deska se nemění, roste jen židle.</li>
+      <li>Radiátor zůstává pod deskou, nad ním v desce větrací mřížka (na pohledu čárkovaně).</li>
+      <li>Nad deskou souvislý pás děrovaných desek SKÅDIS, 4 kusy 76 × 56 cm, spodní hrana 18 cm nad stolem. Doplňky (háčky, poličky, kelímky) si kluci přendávají sami.</li>
+      <li>Vpravo bok skříňové stěny, od podlahy ke stropu.</li>
+    </ul>
+    <h3>Popis pro generování obrázku</h3>
+    <p class="sub">Text, který jde vložit do AI generátoru obrázků (anglicky, bývá spolehlivější).</p>
+    <div class="box"><p>Interior photo of a small children's room, 2.5 m wide and 4.8 m long, ceiling 2.6 m, oak plank floor, white walls. View along the left wall: a 3.1 m long wall-mounted floating desk, 50 cm deep, no legs, light oak top, 72 cm high, running from the corner next to a floor-to-ceiling french window out to the garden. A low white radiator sits under the desk near the window with a slim ventilation grille in the desk top above it. Above the desk, a continuous band of four white IKEA SKÅDIS pegboards with a few hooks and small cups, nothing cluttered. Two wooden children's chairs. At the far end of the room a floor-to-ceiling built-in wardrobe wall across the full width, flat matte doors in a muted sage green, no handles. On the opposite wall a single white IKEA SLÄKT bed with drawers underneath. Lots of free floor, calm neutral timeless style, natural daylight, no toys on display, photorealistic, wide-angle, eye level.</p></div>
   </section>
 
   <section id="pozn">

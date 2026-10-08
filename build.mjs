@@ -187,6 +187,91 @@ const v3 = [
   zone(1400, 3650, 'volná plocha'),
 ].join('');
 
+// ---------- elevation of the left (radiator) wall, variant C ----------
+function elevation() {
+  const CH = 2600, L = 4800;
+  const deskL = 3100, deskZ = 720, deskT = 40;
+  const radX1 = 400, radX2 = 1000, radZ1 = 150, radZ2 = 450;
+  const pegZ1 = 900, pegZ2 = 1460, pegW = 760, pegN = 4;
+  const wardX = 4200;
+  const z = (v) => CH - v; // mm above floor -> svg y
+  let fins = '';
+  for (let x = radX1 + 60; x < radX2; x += 60) fins += `<line class="thin" x1="${x}" y1="${z(radZ2) + 30}" x2="${x}" y2="${z(radZ1) - 30}"/>`;
+  let pegs = '';
+  for (let i = 0; i < pegN; i++) pegs += `<rect class="peg" x="${i * pegW + 10}" y="${z(pegZ2)}" width="${pegW - 20}" height="${pegZ2 - pegZ1}" rx="30"/>`;
+  const chair = (cx) => `<g class="thin">
+    <rect x="${cx - 200}" y="${z(430)}" width="400" height="40" rx="15" fill="#fff"/>
+    <rect x="${cx - 180}" y="${z(820)}" width="360" height="330" rx="40" fill="#fff"/>
+    <line x1="${cx - 170}" y1="${z(430) + 40}" x2="${cx - 190}" y2="${z(0)}"/>
+    <line x1="${cx + 170}" y1="${z(430) + 40}" x2="${cx + 190}" y2="${z(0)}"/>
+  </g>`;
+  return `
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1150 -750 6950 4050" role="img" aria-label="Pohled na levou stěnu, varianta C">
+  <style>
+    .wall { fill: #2a2925; }
+    .thin { stroke: #2a2925; stroke-width: ${SW}; fill: none; }
+    .furn { fill: #ece9e1; stroke: #2a2925; stroke-width: ${SW}; }
+    .peg { fill: url(#dots); stroke: #2a2925; stroke-width: ${SW * 0.7}; }
+    .grille { stroke: #6b675f; stroke-width: ${SW * 0.6}; stroke-dasharray: 40 40; fill: none; }
+    .dim line { stroke: #8a857b; stroke-width: ${SW}; }
+    .dim text, .lbl { font: ${FS}px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif; fill: #3a3833; }
+    .lbl.muted { fill: #8a857b; }
+    .flbl { font: 600 115px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif; fill: #2a2925; }
+    .fsub { font: 95px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif; fill: #6b675f; }
+  </style>
+  <defs>
+    <pattern id="dots" width="100" height="100" patternUnits="userSpaceOnUse">
+      <rect width="100" height="100" fill="#f6f4ee"/>
+      <circle cx="50" cy="50" r="12" fill="#b9b3a7"/>
+    </pattern>
+  </defs>
+
+  <!-- wall surface, floor, ceiling, side walls in section -->
+  <rect x="0" y="0" width="${L}" height="${CH}" fill="#ffffff"/>
+  <rect class="wall" x="${-T}" y="${-T}" width="${L + 2 * T}" height="${T}"/>
+  <rect class="wall" x="${-T}" y="${CH}" width="${L + 2 * T}" height="${T}"/>
+  <rect class="wall" x="${-T}" y="0" width="${T}" height="${CH}"/>
+  <rect class="wall" x="${L}" y="0" width="${T}" height="${CH}"/>
+  <text class="lbl muted" x="${-T - 60}" y="${CH / 2}" text-anchor="middle" transform="rotate(-90 ${-T - 60} ${CH / 2})">okenní stěna</text>
+
+  <!-- wardrobe wall seen from the side -->
+  <rect class="furn" x="${wardX}" y="0" width="${L - wardX}" height="${CH}"/>
+  <text class="flbl" x="${wardX + 300}" y="${CH / 2}" text-anchor="middle" transform="rotate(-90 ${wardX + 300} ${CH / 2})">skříňová stěna (bok)</text>
+
+  <!-- radiator -->
+  <rect class="furn" x="${radX1}" y="${z(radZ2)}" width="${radX2 - radX1}" height="${radZ2 - radZ1}"/>
+  ${fins}
+  <text class="fsub" x="${(radX1 + radX2) / 2}" y="${z(radZ1) + 150}" text-anchor="middle">radiátor</text>
+
+  <!-- pegboard band -->
+  ${pegs}
+  <text class="fsub" x="${deskL / 2}" y="${z(pegZ2) - 60}" text-anchor="middle">děrovaná deska SKÅDIS, 4 × 76 × 56 cm</text>
+
+  <!-- chairs (behind the desk slab) -->
+  ${chair(1500)}${chair(2600)}
+
+  <!-- floating desk slab -->
+  <rect class="furn" x="0" y="${z(deskZ + deskT)}" width="${deskL}" height="${deskT}"/>
+  <rect class="grille" x="${radX1}" y="${z(deskZ + deskT) - 30}" width="${radX2 - radX1}" height="${deskT + 60}"/>
+  <text class="fsub" x="${(radX1 + radX2) / 2}" y="${z(deskZ) + 150}" text-anchor="middle">mřížka v desce</text>
+  <text class="flbl" x="${deskL / 2 + 550}" y="${z(deskZ) + 150}" text-anchor="middle">zavěšený stůl 310 × 50, bez nohou</text>
+
+  <!-- dimensions -->
+  ${dimH(0, deskL, -400, '3 100', 0, 0)}
+  ${dimH(deskL, wardX, -400, '1 100', 0, 0)}
+  ${dimH(wardX, L, -400, '600', 0, 0)}
+  ${dimV(-520, z(deskZ), z(0), '720', 0, 0)}
+  ${dimV(-820, z(CH), z(0), '2 600', -T, -T)}
+  ${dimV(L + 520, z(pegZ2), z(pegZ1), '560', L + T, L + T, 1)}
+  ${dimV(L + 520, z(pegZ1), z(deskZ), '180', L + T, L + T, 1)}
+  <g class="dim">
+    <line x1="0" y1="${CH + 520}" x2="1000" y2="${CH + 520}"/>
+    ${tick(0, CH + 520, 0)}${tick(1000, CH + 520, 0)}
+    <text x="500" y="${CH + 520 - 40}" text-anchor="middle">1 m</text>
+  </g>
+</svg>`;
+}
+
 // ---------- render pages ----------
 function inlineImages(s) {
   return s.replace(/\{\{IMG:([a-z0-9-]+)\}\}/g, (_, name) => {
@@ -203,7 +288,7 @@ function render(src, vars) {
   return s;
 }
 
-const navrh = render('navrh.html', { PLAN_V1: plan(v1), PLAN_V2: plan(v2), PLAN_V3: plan(v3) });
+const navrh = render('navrh.html', { PLAN_V1: plan(v1), PLAN_V2: plan(v2), PLAN_V3: plan(v3), ELEV_V3: elevation() });
 mkdirSync(resolve(here, 'navrh'), { recursive: true });
 writeFileSync(resolve(here, 'navrh/index.html'), navrh);
 writeFileSync(resolve(here, '../build/preview-navrh.html'), navrh);
